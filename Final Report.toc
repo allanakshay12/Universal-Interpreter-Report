@@ -1,45 +1,48 @@
-\contentsline {section}{\numberline {1}Acknowledgement}{}%
-\contentsline {section}{\numberline {2}Abstract}{}%
-\contentsline {section}{\numberline {3}Introduction}{1}%
-\contentsline {subsection}{\numberline {3.1}Problem Definition}{1}%
-\contentsline {subsection}{\numberline {3.2}Objectives}{1}%
-\contentsline {subsection}{\numberline {3.3}Standardised Forms of Communication}{1}%
-\contentsline {subsubsection}{\numberline {3.3.1}Morse Codes}{1}%
-\contentsline {subsubsection}{\numberline {3.3.2}American Sign Language}{1}%
-\contentsline {subsection}{\numberline {3.4}Tools}{1}%
-\contentsline {subsubsection}{\numberline {3.4.1}Frontend Tools}{1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Backend Tools}{1}%
-\contentsline {section}{\numberline {4}System Requirements}{2}%
-\contentsline {subsection}{\numberline {4.1}Software Requirements}{2}%
-\contentsline {subsection}{\numberline {4.2}Hardware Requirements}{2}%
-\contentsline {section}{\numberline {5}System Design}{3}%
-\contentsline {subsection}{\numberline {5.1}Android Application}{3}%
-\contentsline {subsubsection}{\numberline {5.1.1}Application Structure}{3}%
-\contentsline {subsubsection}{\numberline {5.1.2}Frontend Features}{3}%
-\contentsline {subsubsection}{\numberline {5.1.3}Backend Features}{3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Integration of Frontend and Backend}{3}%
-\contentsline {subsection}{\numberline {5.2}Inception v3 Neural Network}{3}%
-\contentsline {subsection}{\numberline {5.3}Application Programming Interfaces}{3}%
-\contentsline {subsubsection}{\numberline {5.3.1}TensorFlow Lite API}{3}%
-\contentsline {subsubsection}{\numberline {5.3.2}Firebase API}{3}%
-\contentsline {subsubsection}{\numberline {5.3.3}Google Text-to-Speech API}{3}%
-\contentsline {subsubsection}{\numberline {5.3.4}Google Speech-to-Text API}{3}%
-\contentsline {section}{\numberline {6}Project Implementation}{4}%
-\contentsline {subsection}{\numberline {6.1}Project Flow}{4}%
-\contentsline {subsubsection}{\numberline {6.1.1}Phase I}{4}%
-\contentsline {subsubsection}{\numberline {6.1.2}Phase II}{4}%
-\contentsline {subsubsection}{\numberline {6.1.3}Phase III}{4}%
-\contentsline {subsection}{\numberline {6.2}Android Application Implementation}{4}%
-\contentsline {subsubsection}{\numberline {6.2.1}Design Ideologies}{4}%
-\contentsline {subsubsection}{\numberline {6.2.2}Application Phases}{4}%
-\contentsline {subsubsection}{\numberline {6.2.3}Database Structure}{4}%
-\contentsline {subsection}{\numberline {6.3}Inception v3 Neural Network}{4}%
-\contentsline {subsubsection}{\numberline {6.3.1}Data Collection}{4}%
-\contentsline {subsubsection}{\numberline {6.3.2}Model Training}{4}%
-\contentsline {subsubsection}{\numberline {6.3.3}Model Predictions}{4}%
-\contentsline {section}{\numberline {7}Project Snapshots}{5}%
-\contentsline {subsection}{\numberline {7.1}Landing Page}{5}%
-\contentsline {subsection}{\numberline {7.2}Settings/Preferences Page}{5}%
-\contentsline {subsection}{\numberline {7.3}Input Methods}{5}%
-\contentsline {section}{\numberline {8}Conclusion}{6}%
-\contentsline {section}{\numberline {9}References}{7}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}%
+\contentsline {section}{\numberline {1.1}Problem Definition}{1}%
+\contentsline {section}{\numberline {1.2}Objectives}{1}%
+\contentsline {section}{\numberline {1.3}Standardised Forms of Communication}{2}%
+\contentsline {subsection}{\numberline {1.3.1}Morse Codes}{2}%
+\contentsline {subsection}{\numberline {1.3.2}American Sign Language}{2}%
+\contentsline {section}{\numberline {1.4}Tools}{2}%
+\contentsline {subsection}{\numberline {1.4.1}Front-end Tools}{3}%
+\contentsline {subsubsection}{Android Studio}{3}%
+\contentsline {subsubsection}{Python}{4}%
+\contentsline {subsection}{\numberline {1.4.2}Back-end Tools}{5}%
+\contentsline {subsubsection}{Firebase}{5}%
+\contentsline {subsubsection}{Neural Network Model}{7}%
+\contentsline {subsubsection}{Python}{8}%
+\contentsline {subsubsection}{Java}{8}%
+\contentsline {chapter}{\numberline {2}System Requirements}{9}%
+\contentsline {section}{\numberline {2.1}Software Requirements}{9}%
+\contentsline {section}{\numberline {2.2}Hardware Requirements}{9}%
+\contentsline {chapter}{\numberline {3}System Design}{10}%
+\contentsline {section}{\numberline {3.1}Android Application}{10}%
+\contentsline {subsection}{\numberline {3.1.1}Application Structure}{10}%
+\contentsline {subsection}{\numberline {3.1.2}Front-end Features}{10}%
+\contentsline {subsection}{\numberline {3.1.3}Back-end Features}{10}%
+\contentsline {subsection}{\numberline {3.1.4}Integration of Front-end and Back-end}{10}%
+\contentsline {section}{\numberline {3.2}Inception v3 Neural Network}{10}%
+\contentsline {section}{\numberline {3.3}Application Programming Interfaces}{10}%
+\contentsline {subsection}{\numberline {3.3.1}TensorFlow Lite API}{10}%
+\contentsline {subsection}{\numberline {3.3.2}Firebase API}{10}%
+\contentsline {subsection}{\numberline {3.3.3}Google Text-to-Speech API}{10}%
+\contentsline {subsection}{\numberline {3.3.4}Google Speech-to-Text API}{10}%
+\contentsline {chapter}{\numberline {4}Project Implementation}{11}%
+\contentsline {section}{\numberline {4.1}Project Flow}{11}%
+\contentsline {subsection}{\numberline {4.1.1}Phase I}{11}%
+\contentsline {subsection}{\numberline {4.1.2}Phase II}{11}%
+\contentsline {subsection}{\numberline {4.1.3}Phase III}{11}%
+\contentsline {section}{\numberline {4.2}Android Application Implementation}{11}%
+\contentsline {subsection}{\numberline {4.2.1}Design Ideologies}{11}%
+\contentsline {subsection}{\numberline {4.2.2}Application Phases}{11}%
+\contentsline {subsection}{\numberline {4.2.3}Database Structure}{11}%
+\contentsline {section}{\numberline {4.3}Inception v3 Neural Network}{11}%
+\contentsline {subsection}{\numberline {4.3.1}Data Collection}{11}%
+\contentsline {subsection}{\numberline {4.3.2}Model Training}{11}%
+\contentsline {subsection}{\numberline {4.3.3}Model Predictions}{11}%
+\contentsline {chapter}{\numberline {5}Project Snapshots}{12}%
+\contentsline {section}{\numberline {5.1}Landing Page}{12}%
+\contentsline {section}{\numberline {5.2}Settings/Preferences Page}{12}%
+\contentsline {section}{\numberline {5.3}Input Methods}{12}%
+\contentsline {chapter}{\numberline {6}Conclusion}{13}%
