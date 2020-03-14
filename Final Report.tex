@@ -16,6 +16,7 @@
 \usepackage{extsizes}
 \usepackage{fancyhdr}
 \usepackage{titleref}
+\usepackage{tabularx}
 \graphicspath{ {./images/} }
 \usepackage [english]{babel}
 \usepackage [autostyle, english = american]{csquotes}
@@ -418,8 +419,9 @@
 						\includegraphics[width=12cm]{ViewGroup.png}
 						\centering
 						\caption{Illustration of a view hierarchy, which defines a UI layout}
+						\label{fig:View}
 					\end{figure}
-					A layout defines the structure for a user interface in your app, such as in an activity. All elements in the layout are built using a hierarchy of View and ViewGroup objects. A View usually draws something the user can see and interact with. Whereas a ViewGroup is an invisible container that defines the layout structure for View and other ViewGroup objects, as shown in Figure 3.2.\\
+					A layout defines the structure for a user interface in your app, such as in an activity. All elements in the layout are built using a hierarchy of View and ViewGroup objects. A View usually draws something the user can see and interact with. Whereas a ViewGroup is an invisible container that defines the layout structure for View and other ViewGroup objects, as shown in Figure~\ref{fig:View}.\\
 
 					The View objects are usually called "widgets" and can be one of many subclasses, such as Button or TextView. The ViewGroup objects are usually called "layouts" can be one of many types that provide a different layout structure, such as LinearLayout or ConstraintLayout.\\
 
@@ -446,7 +448,7 @@
 					\end{itemize}
 					
 					These classes define the style and structure for your dialog, but you should use a DialogFragment as a container for your dialog. The DialogFragment class provides all the controls you need to create your dialog and manage its appearance, instead of calling methods on the Dialog object.\\
-					
+
 					Using DialogFragment to manage the dialog ensures that it correctly handles lifecycle events such as when the user presses the Back button or rotates the screen. The DialogFragment class also allows you to reuse the dialog's UI as an embeddable component in a larger UI, just like a traditional Fragment (such as when you want the dialog UI to appear differently on large and small screens).
 			
 				\subsubsection{Menus}
@@ -455,11 +457,149 @@
 				\subsubsection{Toasts}
 					A toast provides simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. Toasts automatically disappear after a timeout.
 			\subsection{Back-end Features}
-			\subsection{Integration of Front-end and Back-end}
+					The back-end for an Android application comprises mainly of the the programming languages along with the various APIs (Application Programming Interfaces) provided along with the many Android Studio libraries. Few of the APIs that are used in this project are the TensorFlow Lite APIs, Firebase APIs, Google Text-to-Speech APIs and the Google Speech-to-Text APIs. Each of these APIs are discussed in further detail in the subsequent sections.\\
+
+					Few of the key Backend Features required by the Android Application are listed below:
+					\begin{itemize}
+						\item Intents and Intent Filters
+						\item Data and File Storage
+						\item App Resources
+						\item Permissions
+					\end{itemize}
+					\subsubsection{Intents and Intent Filters}
+						\begin{figure}[b]
+							\includegraphics[width=12cm]{IntentFilters.png}
+							\centering
+							\caption{Illustration of how an implicit intent is delivered through the system to start another activity}
+							\label{fig:IntentFilters}
+						\end{figure}
+						An Intent is a messaging object you can use to request an action from another app component. Although intents facilitate communication between components in several ways, there are three fundamental use cases:
+						\begin{itemize}
+							\item \textbf{Starting an activity:} An Activity represents a single screen in an app. You can start a new instance of an Activity by passing an Intent to startActivity(). The Intent describes the activity to start and carries any necessary data. If you want to receive a result from the activity when it finishes, call startActivityForResult(). Your activity receives the result as a separate Intent object in your activity's onActivityResult() callback.
+							\item \textbf{Starting a service:} A Service is a component that performs operations in the background without a user interface. With Android 5.0 (API level 21) and later, you can start a service with JobScheduler. For versions earlier than Android 5.0 (API level 21), you can start a service by using methods of the Service class. You can start a service to perform a one-time operation (such as downloading a file) by passing an Intent to startService(). The Intent describes the service to start and carries any necessary data. If the service is designed with a client-server interface, you can bind to the service from another component by passing an Intent to bindService().
+							\item \textbf{Delivering a broadcast: } A broadcast is a message that any app can receive. The system delivers various broadcasts for system events, such as when the system boots up or the device starts charging. You can deliver a broadcast to other apps by passing an Intent to sendBroadcast() or sendOrderedBroadcast().
+						\end{itemize}
+
+						There are two types of Intents - Implicit and Explicit Intents.
+						\begin{itemize}
+							\item \textbf{Explicit intents} specify which application will satisfy the intent, by supplying either the target app's package name or a fully-qualified component class name. You'll typically use an explicit intent to start a component in your own app, because you know the class name of the activity or service you want to start. For example, you might start a new activity within your app in response to a user action, or start a service to download a file in the background.
+							\item \textbf{Implicit intents} do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.
+						\end{itemize}
+
+						Figure~\ref{fig:IntentFilters}  shows how an intent is used when starting an activity. When the Intent object names a specific activity component explicitly, the system immediately starts that component.\\
+
+						When you use an implicit intent, the Android system finds the appropriate component to start by comparing the contents of the intent to the intent filters declared in the manifest file of other apps on the device. If the intent matches an intent filter, the system starts that component and delivers it the Intent object. If multiple intent filters are compatible, the system displays a dialog so the user can pick which app to use.\\
+
+						An intent filter is an expression in an app's manifest file that specifies the type of intents that the component would like to receive. For instance, by declaring an intent filter for an activity, you make it possible for other apps to directly start your activity with a certain kind of intent. Likewise, if you do not declare any intent filters for an activity, then it can be started only with an explicit intent.
+
+					\subsubsection{Data and File Storage}
+					Android uses a file system that's similar to disk-based file systems on other platforms. The system provides several options for you to save your app data:
+					\begin{itemize}
+						\item \textbf{App-specific storage:} Store files that are meant for your app's use only, either in dedicated directories within an internal storage volume or different dedicated directories within external storage. Use the directories within internal storage to save sensitive information that other apps shouldn't access.
+						\item \textbf{Shared storage:} Store files that your app intends to share with other apps, including media, documents, and other files.
+						\item \textbf{Preferences:} Store private, primitive data in key-value pairs.
+						\item \textbf{Databases:} Store structured data in a private database using the Room persistence library.
+					\end{itemize}
+
+					The solution you choose depends on your specific needs:\\
+
+					\textbf{How much space does your data require?} Internal storage has limited space for app-specific data. Use other types of storage if you need to save a substantial amount of data.\\
+
+					\textbf{How reliable does data access need to be?} If your app's basic functionality requires certain data, such as when your app is starting up, place the data within internal storage directory or a database. App-specific files that are stored in external storage aren't always accessible because some devices allow users to remove a physical device that corresponds to external storage.\\
+
+					\textbf{What kind of data do you need to store?} If you have data that's only meaningful for your app, use app-specific storage. For shareable media content, use shared storage so that other apps can access the content. For structured data, use either preferences (for key-value data) or a database (for data that contains more than 2 columns).\\
+					
+					\textbf{Should the data be private to your app?} When storing sensitive data—data that shouldn't be accessible from any other app—use internal storage, preferences, or a database. Internal storage has the added benefit of the data being hidden from users.\newline \newline
+
+					Android provides two types of physical storage locations: internal storage and external storage. On most devices, internal storage is smaller than external storage. However, internal storage is always available on all devices, making it a more reliable place to put data on which your app depends.\\
+					
+					Removable volumes, such as an SD card, appear in the file system as part of external storage. Android represents these devices using a path, such as /sdcard. Apps themselves are stored within internal storage by default.			
+				
+				\subsubsection{App Resources}
+					Resources are the additional files and static content that your code uses, such as bitmaps, layout definitions, user interface strings, animation instructions, and more.\\
+
+					You should always externalize app resources such as images and strings from your code, so that you can maintain them independently. You should also provide alternative resources for specific device configurations, by grouping them in specially-named resource directories. At runtime, Android uses the appropriate resource based on the current configuration. For example, you might want to provide a different UI layout depending on the screen size or different strings depending on the language setting.\\
+					
+					Once you externalize your app resources, you can access them using resource IDs that are generated in your project's R class.
+
+				\subsubsection{Premissions}
+					The purpose of a permission is to protect the privacy of an Android user. Android apps must request permission to access sensitive user data (such as contacts and SMS), as well as certain system features (such as camera and internet). Depending on the feature, the system might grant the permission automatically or might prompt the user to approve the request.\\
+
+					A central design point of the Android security architecture is that no app, by default, has permission to perform any operations that would adversely impact other apps, the operating system, or the user. This includes reading or writing the user's private data (such as contacts or emails), reading or writing another app's files, performing network access, keeping the device awake, and so on.\\
+
+					An app must publicize the permissions it requires by including <uses-permission> tags in the app manifest. If your app lists normal permissions in its manifest (that is, permissions that don't pose much risk to the user's privacy or the device's operation), the system automatically grants those permissions to your app.\\
+
+					If your app lists dangerous permissions in its manifest (that is, permissions that could potentially affect the user's privacy or the device's normal operation), the user must explicitly agree to grant those permissions.
 		\section{Inception v3 Neural Network}
 		\section{Application Programming Interfaces}
+			An Application Programming Interfaces (API) defines functionalities that are independent of their respective implementations, which allows those implementations and definitions to vary without compromising each other. Therefore, a good API makes it easier to develop a program by providing the building blocks.\\
+
+			When developers create code, they don’t often start from scratch. APIs enable developers can make repetitive yet complex processes highly reusable with a little bit of code. The speed that APIs enable developers to build out apps is crucial to the current pace of application development.\\
+
+			Developers are now much more productive than they were before when they had to write a lot of code from scratch. With an API they don’t have to reinvent the wheel every time they write a new program. Instead, they can focus on the unique proposition of their applications while outsourcing all of the commodity functionality to APIs.
+			\subsubsection{The principle of API abstraction enables speed and agility}
+			One of the chief advantages of APIs is that they allow the abstraction of functionality between one system and another. An API endpoint decouples the consuming application from the infrastructure that provides a service. As long as the specification for what the service provider is delivering to the endpoint remains unchanged, the alterations to the infrastructure behind the endpoint should not be noticed by the applications that rely on that API.\\
+
+			Therefore, the service provider is given a great deal of flexibility when it comes to how its services are offered. For example, if the infrastructure behind the API involves physical servers at a data center, the service provider can easily switch to virtual servers that run in the cloud.\\
+			
+			If the software running on those servers (such as credit card processing software) is written in, say, Java running on an Oracle-based Java application server, the service provider can migrate that to Node.js (server-side Javascript) running on Windows Azure.\\
+			
+			The ability of API-led connectivity to allow systems to change as easily as plugging in a plug to a socket is key to the modern vision of enterprise IT. Gone are the days of messy point-to-point integrations for connecting enterprise solutions which take time and resources to maintain.\\
+
+			Few of the APIs used in this project are mentioned below:
 			\subsection{TensorFlow Lite API}
+				TensorFlow Lite is a set of tools to help developers run TensorFlow models on mobile, embedded, and IoT devices. It enables on-device machine learning inference with low latency and a small binary size.\\
+
+				TensorFlow Lite consists of two main components:
+				\begin{itemize}
+					\item The TensorFlow Lite interpreter, which runs specially optimized models on many different hardware types, including mobile phones, embedded Linux devices, and microcontrollers.
+					\item The TensorFlow Lite converter, which converts TensorFlow models into an efficient form for use by the interpreter, and can introduce optimizations to improve binary size and performance.
+				\end{itemize}
+
+				\subsubsection{Machine learning at the edge}
+					TensorFlow Lite is designed to make it easy to perform machine learning on devices, "at the edge" of the network, instead of sending data back and forth from a server. For developers, performing machine learning on-device can help improve:
+					\begin{itemize}
+						\item \textbf{Latency:} There's no round-trip to a server
+						\item \textbf{Privacy:} No data needs to leave the device
+						\item \textbf{Connectivity:} An Internet connection isn't required
+						\item \textbf{Power consumption:} Network connections are power hungry
+					\end{itemize}
+
+					TensorFlow Lite works with a huge range of devices, from tiny microcontrollers to powerful mobile phones.
+
+				\subsubsection{Key Features}
+					\begin{itemize}
+						\item Interpreter tuned for on-device ML, supporting a set of core operators that are optimized for on-device applications, and with a small binary size.
+						\item Diverse platform support, covering Android and iOS devices, embedded Linux, and microcontrollers, making use of platform APIs for accelerated inference.
+						\item APIs for multiple languages including Java, Swift, Objective-C, C++, and Python.
+						\item High performance, with hardware acceleration on supported devices, device-optimized kernels, and pre-fused activations and biases.
+						\item Model optimization tools, including quantization, that can reduce size and increase performance of models without sacrificing accuracy.
+						\item Efficient model format, using a FlatBuffer that is optimized for small size and portability.
+						\item Pre-trained models for common machine learning tasks that can be customized to your application.
+					\end{itemize}
+				\subsubsection{Development Workflow}
+
+					
+					The workflow for using TensorFlow Lite involves the following steps:
+					\begin{enumerate}
+						\item Pick a Model
+						\item Convert the Model
+						\item Deploy to the Device
+						\item Optimize the Model
+					\end{enumerate}
+					\begin{figure}[h]
+						\includegraphics[width=\textwidth]{TensorWorkflow.png}
+						\centering
+						\caption{Workflow using TensorFlow Lite}
+					\end{figure}
+
 			\subsection{Firebase API}
+				
+				Firebase is a mobile and web application development platform developed by Firebase, Inc. in 2011, then acquired by Google in 2014. As of October 2018, the Firebase platform has 18 products, which are used by 1.5 million apps.\\
+
+				The Firebase APIs provide us with a plethora of services and features that make Mobile Application Development a much simpler task. These services are discussed below.
+				\subsubsection{Firebase Services}
+					
 			\subsection{Google Text-to-Speech API}
 			\subsection{Google Speech-to-Text API}
 

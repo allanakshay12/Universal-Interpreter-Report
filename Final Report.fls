@@ -41,6 +41,8 @@ INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\titleref\titleref.sty
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\titleref\titleref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\switch.def
@@ -139,6 +141,16 @@ INPUT .\images\ViewGroup.png
 INPUT .\images\ViewGroup.png
 INPUT .\images\ViewGroup.png
 INPUT .\images\ViewGroup.png
+INPUT images\IntentFilters.png
+INPUT .\images\IntentFilters.png
+INPUT .\images\IntentFilters.png
+INPUT .\images\IntentFilters.png
+INPUT .\images\IntentFilters.png
+INPUT images\TensorWorkflow.png
+INPUT .\images\TensorWorkflow.png
+INPUT .\images\TensorWorkflow.png
+INPUT .\images\TensorWorkflow.png
+INPUT .\images\TensorWorkflow.png
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
