@@ -41,6 +41,23 @@ INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\titleref\titleref.sty
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\titleref\titleref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\switch.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\txtbabel.def
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.def
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.def
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.cfg
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.cfg
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
@@ -96,6 +113,32 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT images\Morse Code.png
+INPUT .\images\Morse Code.png
+INPUT .\images\Morse Code.png
+INPUT .\images\Morse Code.png
+INPUT .\images\Morse Code.png
+INPUT images\SOS - Morse.png
+INPUT .\images\SOS - Morse.png
+INPUT .\images\SOS - Morse.png
+INPUT .\images\SOS - Morse.png
+INPUT .\images\SOS - Morse.png
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
+INPUT images\ASL Signs.png
+INPUT .\images\ASL Signs.png
+INPUT .\images\ASL Signs.png
+INPUT .\images\ASL Signs.png
+INPUT .\images\ASL Signs.png
+INPUT images\App Life Cycle.png
+INPUT .\images\App Life Cycle.png
+INPUT .\images\App Life Cycle.png
+INPUT .\images\App Life Cycle.png
+INPUT .\images\App Life Cycle.png
+INPUT images\ViewGroup.png
+INPUT .\images\ViewGroup.png
+INPUT .\images\ViewGroup.png
+INPUT .\images\ViewGroup.png
+INPUT .\images\ViewGroup.png
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
@@ -107,3 +150,5 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
