@@ -39,31 +39,37 @@
 \contentsline {subsubsection}{App Resources}{27}%
 \contentsline {subsubsection}{Premissions}{28}%
 \contentsline {section}{\numberline {3.2}Inception v3 Neural Network}{28}%
-\contentsline {section}{\numberline {3.3}Application Programming Interfaces}{28}%
-\contentsline {subsubsection}{The principle of API abstraction enables speed and agility}{29}%
-\contentsline {subsection}{\numberline {3.3.1}TensorFlow Lite API}{29}%
-\contentsline {subsubsection}{Machine learning at the edge}{30}%
-\contentsline {subsubsection}{Key Features}{30}%
-\contentsline {subsubsection}{Development Workflow}{31}%
-\contentsline {subsection}{\numberline {3.3.2}Firebase API}{31}%
-\contentsline {subsubsection}{Firebase Services}{32}%
-\contentsline {subsection}{\numberline {3.3.3}Google Text-to-Speech API}{32}%
-\contentsline {subsection}{\numberline {3.3.4}Google Speech-to-Text API}{32}%
-\contentsline {chapter}{\numberline {4}Project Implementation}{33}%
-\contentsline {section}{\numberline {4.1}Project Flow}{33}%
-\contentsline {subsection}{\numberline {4.1.1}Phase I}{33}%
-\contentsline {subsection}{\numberline {4.1.2}Phase II}{33}%
-\contentsline {subsection}{\numberline {4.1.3}Phase III}{33}%
-\contentsline {section}{\numberline {4.2}Android Application Implementation}{33}%
-\contentsline {subsection}{\numberline {4.2.1}Design Ideologies}{33}%
-\contentsline {subsection}{\numberline {4.2.2}Application Phases}{33}%
-\contentsline {subsection}{\numberline {4.2.3}Database Structure}{33}%
-\contentsline {section}{\numberline {4.3}Inception v3 Neural Network}{33}%
-\contentsline {subsection}{\numberline {4.3.1}Data Collection}{33}%
-\contentsline {subsection}{\numberline {4.3.2}Model Training}{33}%
-\contentsline {subsection}{\numberline {4.3.3}Model Predictions}{33}%
-\contentsline {chapter}{\numberline {5}Project Snapshots}{34}%
-\contentsline {section}{\numberline {5.1}Landing Page}{34}%
-\contentsline {section}{\numberline {5.2}Settings/Preferences Page}{34}%
-\contentsline {section}{\numberline {5.3}Input Methods}{34}%
-\contentsline {chapter}{\numberline {6}Conclusion}{35}%
+\contentsline {subsubsection}{Estimator API}{29}%
+\contentsline {subsubsection}{ImageNet Dataset}{30}%
+\contentsline {subsubsection}{Input Pipeline}{31}%
+\contentsline {subsubsection}{Preprocessing Stage}{36}%
+\contentsline {subsubsection}{Learning Rate Adaptation}{42}%
+\contentsline {section}{\numberline {3.3}Application Programming Interfaces}{44}%
+\contentsline {subsubsection}{The principle of API abstraction enables speed and agility}{44}%
+\contentsline {subsection}{\numberline {3.3.1}TensorFlow Lite API}{45}%
+\contentsline {subsubsection}{Machine learning at the edge}{45}%
+\contentsline {subsubsection}{Key Features}{46}%
+\contentsline {subsubsection}{Development Workflow}{46}%
+\contentsline {subsection}{\numberline {3.3.2}Firebase API}{47}%
+\contentsline {subsubsection}{Firebase Services}{47}%
+\contentsline {subsection}{\numberline {3.3.3}Google Text-to-Speech API}{50}%
+\contentsline {subsubsection}{Evolution}{50}%
+\contentsline {subsection}{\numberline {3.3.4}Google Speech-to-Text API}{52}%
+\contentsline {chapter}{\numberline {4}Project Implementation}{54}%
+\contentsline {section}{\numberline {4.1}Project Flow}{54}%
+\contentsline {subsection}{\numberline {4.1.1}Phase I}{54}%
+\contentsline {subsection}{\numberline {4.1.2}Phase II}{54}%
+\contentsline {subsection}{\numberline {4.1.3}Phase III}{54}%
+\contentsline {section}{\numberline {4.2}Android Application Implementation}{54}%
+\contentsline {subsection}{\numberline {4.2.1}Design Ideologies}{54}%
+\contentsline {subsection}{\numberline {4.2.2}Application Phases}{54}%
+\contentsline {subsection}{\numberline {4.2.3}Database Structure}{54}%
+\contentsline {section}{\numberline {4.3}Inception v3 Neural Network}{54}%
+\contentsline {subsection}{\numberline {4.3.1}Data Collection}{54}%
+\contentsline {subsection}{\numberline {4.3.2}Model Training}{54}%
+\contentsline {subsection}{\numberline {4.3.3}Model Predictions}{54}%
+\contentsline {chapter}{\numberline {5}Project Snapshots}{55}%
+\contentsline {section}{\numberline {5.1}Landing Page}{55}%
+\contentsline {section}{\numberline {5.2}Settings/Preferences Page}{55}%
+\contentsline {section}{\numberline {5.3}Input Methods}{55}%
+\contentsline {chapter}{\numberline {6}Conclusion}{56}%

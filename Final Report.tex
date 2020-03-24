@@ -17,12 +17,23 @@
 \usepackage{fancyhdr}
 \usepackage{titleref}
 \usepackage{tabularx}
+\usepackage{lmodern} % for bold teletype font
+\usepackage{amsmath}  % for \hookrightarrow
+\usepackage{xcolor}   % for \textcolor
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
 \graphicspath{ {./images/} }
 \usepackage [english]{babel}
 \usepackage [autostyle, english = american]{csquotes}
 \MakeOuterQuote{"}
 
-\newcommand{\changefont}{%
+\newcommand{\changefont}{
     \fontsize{10}{10}\selectfont
 }
 
@@ -531,6 +542,391 @@
 
 					If your app lists dangerous permissions in its manifest (that is, permissions that could potentially affect the user's privacy or the device's normal operation), the user must explicitly agree to grant those permissions.
 		\section{Inception v3 Neural Network}
+			Inception v3 is a widely-used image recognition model that has been shown to attain greater than 78.1\% accuracy on the ImageNet dataset. The model is the culmination of many ideas developed by multiple researchers over the years. It is based on the original paper: "Rethinking the Inception Architecture for Computer Vision" by Szegedy, et. al.\\
+
+			The model itself is made up of symmetric and asymmetric building blocks, including convolutions, average pooling, max pooling, concats, dropouts, and fully connected layers. Batchnorm is used extensively throughout the model and applied to activation inputs. Loss is computed via Softmax.\\
+			\begin{figure}[h]
+				\includegraphics[width=\textwidth]{inceptionover.png}
+				\centering
+				\caption{Inception v3 Model Overview}
+				\label{fig:IncOver}
+			\end{figure}
+
+			A high-level diagram of the model is shown in Figure~\ref{fig:IncOver}.
+
+			\subsubsection{Estimator API}
+			The TPU version of Inception v3 is written using TPUEstimator, an API designed to facilitate development, so that you can focus on the models themselves rather than on the details of the underlying hardware. The API does most of the low-level grunge work necessary for running models on TPUs behind the scenes, while automating common functions, such as saving and restoring checkpoints.\\
+
+			The Estimator API enforces separation of model and input portions of the code. You have to define model\_fn and input\_fn functions, corresponding to model definition and input pipeline / preprocessing stages of the TensorFlow graph, respectively. Below is a sample skeleton of these functions:\\
+			\begin{lstlisting}[language=Python]
+def model_fn(features, labels, mode, params):
+	...
+return tpu_estimator.TPUEstimatorSpec(mode=mode, loss=loss, train_op=train_op)
+
+def input_fn(params):
+	def parser(serialized_example):
+		...
+		return image, label
+
+	...
+images, labels = dataset.make_one_shot_iterator().get_next()
+return images, labels
+			\end{lstlisting}
+			Two key functions provided by the API are train() and evaluate() used to train and evaluate, respectively. These are usually called somewhere in the main function. An example of this is shown below:\\
+			\begin{lstlisting}[language=Python]
+def main(unused_argv):
+...
+run_config = tpu_config.RunConfig(
+	master=FLAGS.master,
+	model_dir=FLAGS.model_dir,
+	session_config=tf.ConfigProto(
+		allow_soft_placement=True, log_device_placement=True),
+	tpu_config=tpu_config.TPUConfig(FLAGS.iterations, FLAGS.num_shards),)
+ 
+estimator = tpu_estimator.TPUEstimator(
+	model_fn=model_fn,
+	use_tpu=FLAGS.use_tpu,
+	train_batch_size=FLAGS.batch_size,
+	eval_batch_size=FLAGS.batch_size,
+	config=run_config)
+			  
+estimator.train(input_fn=input_fn, max_steps=FLAGS.train_steps)
+			  
+eval_results = inception_classifier.evaluate(
+	input_fn=imagenet_eval.input_fn, steps=eval_steps)
+			\end{lstlisting}
+			\subsubsection{ImageNet Dataset}
+			Before the model can be used to recognize images, it must be trained. This is usually done via supervised learning using a large set of labeled images. Although Inception v3 can be trained from many different labeled image sets, ImageNet is a common dataset of choice.\\
+
+			ImageNet has over ten million URLs of labeled images. About a million of the images also have bounding boxes specifying a more precise location for the labeled objects.\\
+			
+			For this model, the ImageNet dataset is composed of 1,331,167 images which are split into training and evaluation datasets containing 1,281,167 and 50,000 images, respectively.\\
+			
+			The training and evaluation datasets are kept separate intentionally. Only images from the training dataset are used to train the model and only images from the evaluation dataset are used to evaluate model accuracy.\\
+			
+			The model expects images to be stored as TFRecords. To convert images from raw JPEG files into TFRecords, use the open source batch script: download\_and\_preprocess\_imagenet.sh. The script should produce a series of files (for both training and validation) of the form:\\
+			\begin{lstlisting}[language=Python]
+${DATA_DIR}/train-00000-of-01024
+${DATA_DIR}/train-00001-of-01024
+ ...
+${DATA_DIR}/train-01023-of-01024
+and
+${DATA_DIR}/validation-00000-of-00128
+${DATA_DIR}/validation-00001-of-00128
+ ...
+${DATA_DIR}/validation-00127-of-00128
+			\end{lstlisting}
+			where DATA\_DIR is the location where the set resides, for example: \\ DATA\_DIR=\$HOME/imagenet-data.
+		
+			\subsubsection{Input Pipeline}
+				Each Cloud TPU device has 8 cores and is connected to a host (CPU). Larger slices have multiple hosts. Other larger configurations interact with multiple hosts. For instance, v2-256 communicates with 16 hosts.\\
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{InputPipe.png}
+					\centering
+					\caption{Inception v3 Input Pipeline}
+					\label{fig:InputPipe}
+				\end{figure}
+
+				Hosts retrieve data from the file system or local memory, do whatever data preprocessing is required, and then transfer preprocessed data to the TPU cores. We consider these three phases of data handling done by the host individually and refer to the phases as: 1) Storage, 2) Preprocessing, 3) Transfer. A high level picture of the diagram is shown in Figure~\ref{fig:InputPipe}.\\
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{PerfModel.png}
+					\centering
+					\caption{Inception v3 Performance Models}
+					\label{fig:PerfModel}
+				\end{figure}
+
+				To yield good performance, the system should be balanced. Whatever amount of time a host CPU spends retrieving images, decoding them, and doing relevant preprocessing, should ideally be slightly less or about the same as that spent by the TPU doing computations. If the host CPU takes longer than the TPU to complete the three data handling phases, then execution will be host bound. (Note: because TPUs are so fast, this may be unavoidable for some very simple models.) Both cases are shown in the Figure~\ref{fig:PerfModel}.\\
+		
+				The current implementation of Inception v3 lives right at the edge of being input-bound. Images have to be retrieved from the file system, decoded, and then preprocessed. Different types of preprocessing stages are available, ranging from moderate to complex. If we use the most complex of preprocessing stages, the large number of expensive operations executed by the preprocessing stage will push the system over the edge and the training pipeline will be preprocessing bound. However, it is not necessary to resort to that level of complexity to attain greater than 78.1\% accuracy, and we instead use a moderately complex preprocessing stage that tilts the scale in the other direction and keeps the model TPU-bound. This is discussed in more detail in the next section.\\
+
+				The model uses tf.data.Dataset to handle all input pipeline related needs. See the datasets performance guide for more information on how to optimize input pipelines using the tf.data API.\\
+
+				Although you can simply define a function and pass it to the Estimator API, in the case of Inception, create class InputPipeline encapsulates all required functionality and define a \_\_call\_\_ method instead.\\
+
+				The Estimator API makes it very straightforward to use this class. One simply has to pass it to the input\_fn parameter of functions train() and evaluate(), as shown in the sample code snippet below:\\
+				\begin{lstlisting}[language=Python]
+def main(unused_argv):
+
+...
+
+  inception_classifier = tpu_estimator.TPUEstimator(
+      model_fn=inception_model_fn,
+      use_tpu=FLAGS.use_tpu,
+      config=run_config,
+      params=params,
+      train_batch_size=FLAGS.train_batch_size,
+      eval_batch_size=eval_batch_size,
+      batch_axis=(batch_axis, 0))
+
+          ...
+
+  for cycle in range(FLAGS.train_steps // FLAGS.train_steps_per_eval):
+    tf.logging.info('Starting training cycle %d.' % cycle)
+    inception_classifier.train(
+        input_fn=InputPipeline(True), steps=FLAGS.train_steps_per_eval)
+
+    tf.logging.info('Starting evaluation cycle %d .' % cycle)
+    eval_results = inception_classifier.evaluate(
+        input_fn=InputPipeline(False), steps=eval_steps, hooks=eval_hooks)
+    tf.logging.info('Evaluation results: %s' % eval_results)
+				\end{lstlisting}
+
+				The main elements of class InputPipeline are shown in the code snippet below, where we have highlighted the three phases with different colors. Method \_\_call\_\_ creates the dataset using tf.data.Dataset and then makes a series of API calls to utilize the built-in prefetch, interleave, and shuffling capabilities of the dataset.\\
+				\begin{lstlisting}[language=Python]
+class InputPipeline(object):
+
+  def __init__(self, is_training):
+    self.is_training = is_training
+
+  def __call__(self, params):
+    # Storage
+    file_pattern = os.path.join(
+        FLAGS.data_dir, 'train-*' if self.is_training else 'validation-*')
+    dataset = tf.data.Dataset.list_files(file_pattern)
+    if self.is_training and FLAGS.initial_shuffle_buffer_size > 0:
+      dataset = dataset.shuffle(
+          buffer_size=FLAGS.initial_shuffle_buffer_size)
+    if self.is_training:
+      dataset = dataset.repeat()
+
+    def prefetch_dataset(filename):
+      dataset = tf.data.TFRecordDataset(
+          filename, buffer_size=FLAGS.prefetch_dataset_buffer_size)
+      return dataset
+
+    dataset = dataset.apply(
+        tf.contrib.data.parallel_interleave(
+            prefetch_dataset,
+            cycle_length=FLAGS.num_files_infeed,
+            sloppy=True))
+    if FLAGS.followup_shuffle_buffer_size > 0:
+      dataset = dataset.shuffle(
+          buffer_size=FLAGS.followup_shuffle_buffer_size)
+
+    # Preprocessing
+    dataset = dataset.map(
+        self.dataset_parser,
+        num_parallel_calls=FLAGS.num_parallel_calls)
+
+    dataset = dataset.prefetch(batch_size)
+    dataset = dataset.apply(
+        tf.contrib.data.batch_and_drop_remainder(batch_size))
+    dataset = dataset.prefetch(2)  # Prefetch overlaps in-feed with training
+    images, labels = dataset.make_one_shot_iterator().get_next()
+
+    # Transfer
+    return images, labels
+				\end{lstlisting}
+
+				The storage section begins with the creation of a dataset and includes the reading of TFRecords from storage (using tf.data.TFRecordDataset). Special purpose functions repeat() and shuffle() are used as needed. Function tf.contrib.data.parallel\_interleave() maps function prefetch\_dataset() across its input to produce nested datasets, and outputs their elements interleaved. It gets elements from cycle\_length nested datasets in parallel, which increases throughput. The sloppy argument relaxes the requirement that the outputs be produced in a deterministic order, and allows the implementation to skip over nested datasets whose elements are not readily available when requested.\\
+
+				The preprocessing section calls dataset.map(parser) which in turn calls the parser function where images are preprocessed. The details of the preprocessing stage are discussed in the next section.\\
+
+				The transfer section (at the end of the function) includes the line return images, labels. TPUEstimator takes the returned values and automatically transfers them to the device.\\
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{TPUInception.png}
+					\centering
+					\caption{Sample Cloud TPU Performance Trace of Inception v3}
+					\label{fig:TPUInception}
+				\end{figure}
+
+				Figure~\ref{fig:TPUInception} shows a sample Cloud TPU performance trace of Inception v3. TPU compute time, discounting any infeeding stalls, is currently at 815 msecs or so.\\
+			\subsubsection{Preprocessing Stage}
+				Image preprocessing is a crucial part of the system and can heavily influence the maximum accuracy that the model attains during training. At a minimum, images need to be decoded and resized to fit the model. In the case of Inception, images need to be 299x299x3 pixels.\\
+
+				However, simply decoding and resizing will not be enough to get good accuracy. The ImageNet training dataset contains 1,281,167 images. One pass over the set of training images is referred to as an epoch. During training, the model will require several passes through the training dataset to improve its image recognition capabilities. In the case of Inception v3, the number of epochs needed will be somewhere in the 140 to 200 range depending on the global batchsize.\\
+
+				It is extremely beneficial to continuously alter the images before feeding them to the model and to do so in such a manner that a particular image is slightly different at every epoch. How to best do this preprocessing of images is as much art as it is science. On the one hand, a well designed preprocessing stage can significantly boost the recognition capabilities of a model. On the other, too simple a preprocessing stage may create an artificial ceiling on the maximum accuracy that the same model can attain during training.\\
+
+				Inception v3 offers different options for the preprocessing stage, ranging from relatively simple and computationally inexpensive to fairly complex and computationally expensive. Two distinct flavors of such can be found in files vgg\_preprocessing.py and inception\_preprocessing.py.\\
+
+				File vgg\_preprocessing.py defines a preprocessing stage that has been used successfully to train resnet to 75\% accuracy, but yields suboptimal results when applied on Inception v3.\\
+
+				File inception\_preprocessing.py contains a multi-option preprocessing stage with different levels of complexity that has been used successfully to train Inception v3 to accuracies in the 78.1-78.5\% range when run on TPUs. This section discusses the preprocessing pipeline.\\
+
+				Preprocessing differs depending on whether the model is undergoing training or being used for inference/evaluation.\\
+
+				At evaluation time, preprocessing is quite straightforward: crop a central region of the image and then resize it to the default 299x299 size. The snippet code that does this is shown below:\\
+				\begin{lstlisting}[language=Python]
+def preprocess_for_eval(image, height, width, central_fraction=0.875):
+  with tf.name_scope(scope, 'eval_image', [image, height, width]):
+    if image.dtype != tf.float32:
+      image = tf.image.convert_image_dtype(image, dtype=tf.float32)
+    image = tf.image.central_crop(image, central_fraction=central_fraction)
+    image = tf.expand_dims(image, 0)
+    image = tf.image.resize_bilinear(image, [height, width], align_corners=False)
+    image = tf.squeeze(image, [0])
+    image = tf.subtract(image, 0.5)
+    image = tf.multiply(image, 2.0)
+    image.set_shape([height, width, 3])
+    return image
+				\end{lstlisting}				
+
+				During training, the cropping is randomized: a bounding box is chosen randomly to select a region of the image which is then resized. The resized image is then optionally flipped and its colors are distorted. The snippet of code that does this is shown below:\\
+				\begin{lstlisting}[language=Python]
+def preprocess_for_train(image, height, width, bbox, fast_mode=True, scope=None):
+  with tf.name_scope(scope, 'distort_image', [image, height, width, bbox]):
+    if bbox is None:
+      bbox = tf.constant([0.0, 0.0, 1.0, 1.0], dtype=tf.float32, shape=[1, 1, 4])
+    if image.dtype != tf.float32:
+      image = tf.image.convert_image_dtype(image, dtype=tf.float32)
+
+    distorted_image, distorted_bbox = distorted_bounding_box_crop(image, bbox)
+    distorted_image.set_shape([None, None, 3])
+
+    num_resize_cases = 1 if fast_mode else 4
+    distorted_image = apply_with_random_selector(
+        distorted_image,
+        lambda x, method: tf.image.resize_images(x, [height, width], method),
+        num_cases=num_resize_cases)
+
+    distorted_image = tf.image.random_flip_left_right(distorted_image)
+
+    if FLAGS.use_fast_color_distort:
+      distorted_image = distort_color_fast(distorted_image)
+    else:
+      num_distort_cases = 1 if fast_mode else 4
+      distorted_image = apply_with_random_selector(
+          distorted_image,
+          lambda x, ordering: distort_color(x, ordering, fast_mode),
+          num_cases=num_distort_cases)
+
+    distorted_image = tf.subtract(distorted_image, 0.5)
+    distorted_image = tf.multiply(distorted_image, 2.0)
+    return distorted_image
+				\end{lstlisting}
+
+				Function distort\_color is in charge of color alteration. It offers a fast mode where only brightness and saturation are modified. The full mode modifies brightness, saturation, and hue, and randomly alters the order in which these get modified. A code snippet of this function is shown below:\\
+				\begin{lstlisting}[language=Python]
+def distort_color(image, color_ordering=0, fast_mode=True, scope=None):
+  with tf.name_scope(scope, 'distort_color', [image]):
+    if fast_mode:
+      if color_ordering == 0:
+        image = tf.image.random_brightness(image, max_delta=32. / 255.)
+        image = tf.image.random_saturation(image, lower=0.5, upper=1.5)
+      else:
+        image = tf.image.random_saturation(image, lower=0.5, upper=1.5)
+        image = tf.image.random_brightness(image, max_delta=32. / 255.)
+    else:
+      if color_ordering == 0:
+        image = tf.image.random_brightness(image, max_delta=32. / 255.)
+        image = tf.image.random_saturation(image, lower=0.5, upper=1.5)
+        image = tf.image.random_hue(image, max_delta=0.2)
+        image = tf.image.random_contrast(image, lower=0.5, upper=1.5)
+      elif color_ordering == 1:
+        image = tf.image.random_saturation(image, lower=0.5, upper=1.5)
+        image = tf.image.random_brightness(image, max_delta=32. / 255.)
+        image = tf.image.random_contrast(image, lower=0.5, upper=1.5)
+        image = tf.image.random_hue(image, max_delta=0.2)
+      elif color_ordering == 2:
+        image = tf.image.random_contrast(image, lower=0.5, upper=1.5)
+        image = tf.image.random_hue(image, max_delta=0.2)
+        image = tf.image.random_brightness(image, max_delta=32. / 255.)
+        image = tf.image.random_saturation(image, lower=0.5, upper=1.5)
+      elif color_ordering == 3:
+        image = tf.image.random_hue(image, max_delta=0.2)
+        image = tf.image.random_saturation(image, lower=0.5, upper=1.5)
+        image = tf.image.random_contrast(image, lower=0.5, upper=1.5)
+        image = tf.image.random_brightness(image, max_delta=32. / 255.)
+
+    return tf.clip_by_value(image, 0.0, 1.0)
+				\end{lstlisting}
+
+				Function distort\_color is computationally expensive, partly due to the nonlinear RGB to HSV and HSV to RGB conversions that are required in order to access hue and saturation. Both fast and full modes require these conversions and although fast mode is less computationally expensive, it still pushes the model to the CPU-compute-bound region, when enabled.\\
+
+				As an alternative, a new function distort\_color\_fast has been added to the list of options. This function maps the image from RGB to YCrCb using the JPEG conversion scheme and randomly alters brightness and the Cr/Cb chromas before mapping back to RGB. The function is shown in the code snippet below:\\
+				\begin{lstlisting}[language=Python]
+def distort_color_fast(image, scope=None):
+  with tf.name_scope(scope, 'distort_color', [image]):
+    br_delta = random_ops.random_uniform([], -32./255., 32./255., seed=None)
+    cb_factor = random_ops.random_uniform(
+        [], -FLAGS.cb_distortion_range, FLAGS.cb_distortion_range, seed=None)
+    cr_factor = random_ops.random_uniform(
+        [], -FLAGS.cr_distortion_range, FLAGS.cr_distortion_range, seed=None)
+
+    channels = tf.split(axis=2, num_or_size_splits=3, value=image)
+    red_offset = 1.402 * cr_factor + br_delta
+    green_offset = -0.344136 * cb_factor - 0.714136 * cr_factor + br_delta
+    blue_offset = 1.772 * cb_factor + br_delta
+    channels[0] += red_offset
+    channels[1] += green_offset
+    channels[2] += blue_offset
+    image = tf.concat(axis=2, values=channels)
+    image = tf.clip_by_value(image, 0., 1.)
+    return image
+				\end{lstlisting}
+
+				\begin{figure}[h]
+					\includegraphics[width=13cm]{DistortSample.png}
+					\centering
+					\caption{Preprocessing Sample Image}
+					\label{fig:DistortSample}
+				\end{figure}
+
+				Figure~\ref{fig:DistortSample} depicts a sample image that has undergone preprocessing. A randomly chosen region of the image has been selected and colors altered using the distort\_color\_fast function.\\
+
+				Function distort\_color\_fast is computationally efficient and still allows training to be TPU execution time bound. In addition, it yields good results and has been used successfully to train the Inception v3 model to greater than 78.1\% accuracy using batchsizes in the 1,024 to 16,384 range. It is used as the default choice for Inception v3.\\
+
+			\subsubsection{Learning Rate Adaptation}
+				As batch sizes become larger, training becomes more difficult. Different techniques continue to be proposed to allow efficient training for large batch sizes.\\
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{EpochIncep.png}
+					\centering
+					\caption{Inception v3 Learning Rate}
+					\label{fig:EpochIncep}
+				\end{figure}
+
+				One of said techniques: gradual learning rate ramp-up, was used to train the model to greater than 78.1\% accuracy for batch sizes ranging from 4,096 to 16,384. For the case of inception v3, the learning rate is first set to about 10\% of what would normally be the starting learning rate. The learning rate remains constant at this low value for a specified (small) number of 'cold epochs', and then begins a linear increase for a specified number of 'warm-up epochs' at the end of which it intersects what would have been the learning rate should a normal exponential decay had been used. This is illustrated in the Figure~\ref{fig:EpochIncep}.\\
+
+				The bit of code that does this is shown in the snippet below:\\
+				\begin{lstlisting}[language=Python]
+initial_learning_rate = FLAGS.learning_rate * FLAGS.train_batch_size / 256
+if FLAGS.use_learning_rate_warmup:
+  warmup_decay = FLAGS.learning_rate_decay**(
+    (FLAGS.warmup_epochs + FLAGS.cold_epochs) /
+    FLAGS.learning_rate_decay_epochs)
+  adj_initial_learning_rate = initial_learning_rate * warmup_decay
+
+final_learning_rate = 0.0001 * initial_learning_rate
+
+train_op = None
+if training_active:
+  batches_per_epoch = _NUM_TRAIN_IMAGES / FLAGS.train_batch_size
+  global_step = tf.train.get_or_create_global_step()
+  current_epoch = tf.cast(
+    (tf.cast(global_step, tf.float32) / batches_per_epoch), tf.int32)
+
+  learning_rate = tf.train.exponential_decay(
+    learning_rate=initial_learning_rate,
+    global_step=global_step,
+    decay_steps=int(FLAGS.learning_rate_decay_epochs * batches_per_epoch),
+    decay_rate=FLAGS.learning_rate_decay,
+    staircase=True)
+
+  if FLAGS.use_learning_rate_warmup:
+    wlr = 0.1 * adj_initial_learning_rate
+    wlr_height = tf.cast(
+      0.9 * adj_initial_learning_rate /
+      (FLAGS.warmup_epochs + FLAGS.learning_rate_decay_epochs - 1),
+      tf.float32)
+    epoch_offset = tf.cast(FLAGS.cold_epochs - 1, tf.int32)
+    exp_decay_start = (FLAGS.warmup_epochs + FLAGS.cold_epochs +
+                   FLAGS.learning_rate_decay_epochs)
+    lin_inc_lr = tf.add(
+      wlr, tf.multiply(
+        tf.cast(tf.subtract(current_epoch, epoch_offset), tf.float32),
+        wlr_height))
+    learning_rate = tf.where(
+      tf.greater_equal(current_epoch, FLAGS.cold_epochs),
+      (tf.where(tf.greater_equal(current_epoch, exp_decay_start),
+              learning_rate, lin_inc_lr)),
+       wlr)
+
+  # Set a minimum boundary for the learning rate.
+  learning_rate = tf.maximum(
+      learning_rate, final_learning_rate, name='learning_rate')
+				\end{lstlisting}
+	
 		\section{Application Programming Interfaces}
 			An Application Programming Interfaces (API) defines functionalities that are independent of their respective implementations, which allows those implementations and definitions to vary without compromising each other. Therefore, a good API makes it easier to develop a program by providing the building blocks.\\
 
@@ -598,11 +994,62 @@
 				Firebase is a mobile and web application development platform developed by Firebase, Inc. in 2011, then acquired by Google in 2014. As of October 2018, the Firebase platform has 18 products, which are used by 1.5 million apps.\\
 
 				The Firebase APIs provide us with a plethora of services and features that make Mobile Application Development a much simpler task. These services are discussed below.
+				\begin{figure}[b]
+					\includegraphics[width=14cm]{firebaseblog.png}
+					\centering
+					\caption{Firebase as a Database Server and Cloud Messaging platform}
+				\end{figure}
 				\subsubsection{Firebase Services}
-					
+					\begin{itemize}
+						\item \textbf{Google Analytics - }Google Analytics is a cost-free app measurement solution that provides insights on app usage and user engagement.
+						\item \textbf{Firebase Cloud Messaging - }Formerly known as Google Cloud Messaging (GCM), Firebase Cloud Messaging (FCM) is a cross-platform solution for messages and notifications for Android, iOS, and web applications, which as of 2016 can be used at no cost.						
+						\item \textbf{Firebase Authentication - }Firebase Authentication is a service that can authenticate users using only client-side code. It supports social login providers Facebook, GitHub, Twitter and Google as well as other service providers like Google Play Games, Apple, Yahoo, and Microsoft. Additionally, it includes a user management system whereby developers can enable user authentication with email and password login stored with Firebase.
+						\item \textbf{Firebase Realtime Database - }Firebase provides a real-time database and back-end as a service. The service provides application developers an API that allows application data to be synchronized across clients and stored on Firebase's cloud. The company provides client libraries that enable integration with Android, iOS, JavaScript, Java, Objective-C, Swift and Node.js applications. The database is also accessible through a REST API and bindings for several JavaScript frameworks such as AngularJS, React, Ember.js and Backbone.js. The REST API uses the Server-Sent Events protocol, which is an API for creating HTTP connections for receiving push notifications from a server. Developers using the realtime database can secure their data by using the company's server-side-enforced security rules.
+						\item \textbf{Cloud Firestore - }On January 31, 2019, Cloud Firestore was officially brought out of beta, making it an official product of the Firebase lineup. It is the successor to Firebase's original databasing system, Real-time Database, and allows for nested documents and fields rather than the tree-view provided in the Real-time Database.
+						\item \textbf{Firebase Storage - }Firebase Storage provides secure file uploads and downloads for Firebase apps, regardless of network quality, to be used for storing images, audio, video, or other user-generated content. It is backed by Google Cloud Storage.
+						\item \textbf{Firebase Hosting - }Firebase Hosting is a static and dynamic web hosting service that launched on May 13, 2014. It supports hosting static files such as CSS, HTML, JavaScript and other files, as well as support through Cloud Functions. The service delivers files over a content delivery network (CDN) through HTTP Secure (HTTPS) and Secure Sockets Layer encryption (SSL). Firebase partners with Fastly, a CDN, to provide the CDN backing Firebase Hosting. The company states that Firebase Hosting grew out of customer requests; developers were using Firebase for its real-time database but needed a place to host their content.
+						\begin{figure}[h]
+							\includegraphics[width=14cm]{firebaserest.png}
+							\centering
+							\caption{Firebase Cloud Functions}
+						\end{figure}
+						\item \textbf{ML Kit - }ML Kit is a mobile machine learning system for developers launched on May 8, 2018, in beta during the Google I/O 2018. ML Kit APIs feature a variety of features including optical character recognition, detecting faces, scanning barcodes, labelling images and recognising landmarks. It is currently available for iOS or Android developers. You may also import your own TensorFlow Lite models, if the given APIs are not enough. The APIs can be used on-device or on-cloud.
+						\item \textbf{Crashlytics - }Crash Reporting creates detailed reports of the errors in the app. Errors are grouped into clusters of similar stack traces and triaged by the severity of impact on app users. In addition to automatic reports, the developer can log custom events to help capture the steps leading up to a crash. Before acquiring Crashlytics, Firebase was using its own Firebase Crash Reporting.
+						\item \textbf{Performance - }Firebase Performance provides insights into an app's performance and the latencies the app's users experience.
+						\item \textbf{Firebase Test Lab - }Firebase Test Lab provides cloud-based infrastructure for testing Android and iOS apps in one operation. Developers can test their apps across a wide variety of devices and device configurations. Test results—including logs, videos, and screenshots—are made available in the Firebase console. Even if a developer hasn't written any test code for their app, Test Lab can exercise the app automatically, looking for crashes. Test Lab for iOS is currently in beta.
+						\item \textbf{Admob - }Admob is a Google product that integrates with Firebase audience.
+						\item \textbf{Firebase Dynamic Links - }Dynamic Firebase links are smart URLs that dynamically change their behavior to provide "the best available experience" across multiple platforms, including desktop web browsers, iOS, and Android, and in-depth links to mobile apps. Dynamic Links work in all app installs: if the user opens Dynamic Link on iOS or Android and the application is not installed, the user will be prompted to install the app first. Once installed, the application will start running and can access the link.
+					\end{itemize}
 			\subsection{Google Text-to-Speech API}
+				Google Text-to-Speech is a screen reader application developed by Google for its Android operating system. It powers applications to read aloud (speak) the text on the screen with support for many languages. Text-to-Speech may be used by apps such as Google Play Books for reading books aloud, by Google Translate for reading aloud translations providing useful insight to the pronunciation of words, by Google Talkback and other spoken feedback accessibility-based applications, as well as by third-party apps. Users must install voice data for each language.
+					\subsubsection{Evolution}
+						\begin{figure}[b]
+							\includegraphics[width=14cm]{cloudtts.png}
+							\centering
+							\caption{Google Text-to-Speech API}
+						\end{figure}
+						Some app developers have started adapting and tweaking their Android Auto apps to include Text-to-Speech, such as Hyundai in 2015. Apps such as textPlus and WhatsApp use Text-to-Speech to read notifications aloud and provide voice-reply functionality.\\
+						
+						Cloud Text-to-Speech is powered by WaveNet, software created by Google's UK-based AI subsidiary DeepMind. Since Google bought DeepMind in 2014, it's been exploring ways to turn the company's AI talent into tangible products. Integrating WaveNet into its cloud service is significant as Google tries to win the cloud business away from Amazon and Microsoft, presenting its AI skills as its differentiating factor.\\
+						
+						DeepMind's AI voice synthesis tech is notably advanced and realistic. Most voice synthesizers (including Apple's Siri) use concatenative synthesis, in which a program stores individual syllables — sounds such as “ba,” “sht,” and “oo” — and pieces them together to form words and sentences. WaveNet instead uses machine learning to generate speech. It then waveforms from a database of human speech and re-creates them at a rate of 24,000 samples per second. The end result includes voices with subtleties like lip smacks and accents. When Google first unveiled WaveNet in 2016, it was too computationally intensive to work outside of research environments, but it's since been slimmed down significantly, showing a clear pipeline from research to product. Google Cloud Text-to-Speech converts text into human-like speech in more than 180 voices across 30+ languages and variants. It applies groundbreaking research in speech synthesis (WaveNet) and Google's powerful neural networks to deliver high-fidelity audio. Includes exclusive access to WaveNet technology DeepMind has done groundbreaking research in machine learning models to generate speech that mimics human voices and sounds more natural, reducing the gap with human performance by 70\%. Cloud Text-to-Speech offers exclusive access to 90+ WaveNet voices and will continue to add more over time.
 			\subsection{Google Speech-to-Text API}
+				Speech recognition is an interdisciplinary subfield of computational linguistics that develops methodologies and technologies that enables the recognition and translation of spoken language into text by computers. It is also known as automatic speech recognition (ASR), computer speech recognition or speech to text (STT). It incorporates knowledge and research in the linguistics, computer science, and electrical engineering fields.\\
 
+				Some speech recognition systems require "training" (also called "enrollment") where an individual speaker reads text or isolated vocabulary into the system. The system analyzes the person's specific voice and uses it to fine-tune the recognition of that person's speech, resulting in increased accuracy. Systems that do not use training are called "speaker independent" systems. Systems that use training are called "speaker dependent".\\
+				\begin{figure}[h]
+					\includegraphics[width=14cm]{googlestt.png}
+					\centering
+					\caption{Google Speech-to-Text API}
+				\end{figure}
+				
+				Speech recognition applications include voice user interfaces such as voice dialing (e.g. "call home"), call routing (e.g. "I would like to make a collect call"), domotic appliance control, search key words (e.g. find a podcast where particular words were spoken), simple data entry (e.g., entering a credit card number), preparation of structured documents (e.g. a radiology report), determining speaker characteristics, speech-to-text processing (e.g., word processors or emails), and aircraft (usually termed direct voice input).\\
+
+				The term voice recognition or speaker identification refers to identifying the speaker, rather than what they are saying. Recognizing the speaker can simplify the task of translating speech in systems that have been trained on a specific person's voice or it can be used to authenticate or verify the identity of a speaker as part of a security process.\\
+				
+				From the technology perspective, speech recognition has a long history with several waves of major innovations. Most recently, the field has benefited from advances in deep learning and big data. The advances are evidenced not only by the surge of academic papers published in the field, but more importantly by the worldwide industry adoption of a variety of deep learning methods in designing and deploying speech recognition systems.\\
+
+				For the purposes of this project, the Google Text-to-Speech API has been employed to perform the Speech Recognition operations.
 	\newpage
 
 	%Project Implementation

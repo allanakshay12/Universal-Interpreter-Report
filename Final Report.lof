@@ -8,7 +8,17 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Android Application Life Cycle}}{17}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Illustration of a view hierarchy, which defines a UI layout}}{21}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Illustration of how an implicit intent is delivered through the system to start another activity}}{24}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Workflow using TensorFlow Lite}}{31}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Inception v3 Model Overview}}{29}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Inception v3 Input Pipeline}}{32}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Inception v3 Performance Models}}{33}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Sample Cloud TPU Performance Trace of Inception v3}}{36}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Preprocessing Sample Image}}{41}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Inception v3 Learning Rate}}{42}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Workflow using TensorFlow Lite}}{47}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Firebase as a Database Server and Cloud Messaging platform}}{48}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Firebase Cloud Functions}}{49}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Google Text-to-Speech API}}{51}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Google Speech-to-Text API}}{52}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

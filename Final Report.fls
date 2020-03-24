@@ -43,6 +43,28 @@ INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\titleref\
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\titleref\titleref.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\lmodern.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\lmodern.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\switch.def
@@ -63,6 +85,9 @@ INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr12.tfm
 INPUT C:\Program Files\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Program Files\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
@@ -85,22 +110,35 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifluatex.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifluatex.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\pdftexcmds\pdftexcmds.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmmi10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmex10.tfm
 OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.pdf
 INPUT C:\Users\Jerry Allan Akshay\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmbx12.tfm
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.toc
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.toc
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmmi7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\lmsy7.tfm
 OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.toc
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lof
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lof
@@ -108,13 +146,13 @@ OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lot
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lot
 OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lot
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmbx12.tfm
 INPUT images\Morse Code.png
 INPUT .\images\Morse Code.png
 INPUT .\images\Morse Code.png
@@ -125,7 +163,7 @@ INPUT .\images\SOS - Morse.png
 INPUT .\images\SOS - Morse.png
 INPUT .\images\SOS - Morse.png
 INPUT .\images\SOS - Morse.png
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmri12.tfm
 INPUT images\ASL Signs.png
 INPUT .\images\ASL Signs.png
 INPUT .\images\ASL Signs.png
@@ -146,21 +184,90 @@ INPUT .\images\IntentFilters.png
 INPUT .\images\IntentFilters.png
 INPUT .\images\IntentFilters.png
 INPUT .\images\IntentFilters.png
+INPUT images\inceptionover.png
+INPUT .\images\inceptionover.png
+INPUT .\images\inceptionover.png
+INPUT .\images\inceptionover.png
+INPUT .\images\inceptionover.png
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmtt.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmtt.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmtt12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmtk10.tfm
+INPUT images\InputPipe.png
+INPUT .\images\InputPipe.png
+INPUT .\images\InputPipe.png
+INPUT .\images\InputPipe.png
+INPUT .\images\InputPipe.png
+INPUT images\PerfModel.png
+INPUT .\images\PerfModel.png
+INPUT .\images\PerfModel.png
+INPUT .\images\PerfModel.png
+INPUT .\images\PerfModel.png
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmtti10.tfm
+INPUT images\TPUInception.png
+INPUT .\images\TPUInception.png
+INPUT .\images\TPUInception.png
+INPUT .\images\TPUInception.png
+INPUT .\images\TPUInception.png
+INPUT images\DistortSample.png
+INPUT .\images\DistortSample.png
+INPUT .\images\DistortSample.png
+INPUT .\images\DistortSample.png
+INPUT .\images\DistortSample.png
+INPUT images\EpochIncep.png
+INPUT .\images\EpochIncep.png
+INPUT .\images\EpochIncep.png
+INPUT .\images\EpochIncep.png
+INPUT .\images\EpochIncep.png
 INPUT images\TensorWorkflow.png
 INPUT .\images\TensorWorkflow.png
 INPUT .\images\TensorWorkflow.png
 INPUT .\images\TensorWorkflow.png
 INPUT .\images\TensorWorkflow.png
+INPUT images\firebaseblog.png
+INPUT .\images\firebaseblog.png
+INPUT .\images\firebaseblog.png
+INPUT .\images\firebaseblog.png
+INPUT .\images\firebaseblog.png
+INPUT images\firebaserest.png
+INPUT .\images\firebaserest.png
+INPUT .\images\firebaserest.png
+INPUT .\images\firebaserest.png
+INPUT .\images\firebaserest.png
+INPUT images\cloudtts.png
+INPUT .\images\cloudtts.png
+INPUT .\images\cloudtts.png
+INPUT .\images\cloudtts.png
+INPUT .\images\cloudtts.png
+INPUT images\googlestt.png
+INPUT .\images\googlestt.png
+INPUT .\images\googlestt.png
+INPUT .\images\googlestt.png
+INPUT .\images\googlestt.png
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-rmtt.enc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathit.enc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmbx12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmbx12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmr10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmr10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmr12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmr12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmr17.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmr17.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmri12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmri12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmtk10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmtk10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmtt12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmtt12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmtti10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmtti10.pfb
