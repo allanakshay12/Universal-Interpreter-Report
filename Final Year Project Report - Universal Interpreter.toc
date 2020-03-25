@@ -1,0 +1,82 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{1}%
+\contentsline {section}{\numberline {1.1}Problem Definition}{1}%
+\contentsline {section}{\numberline {1.2}Objectives}{1}%
+\contentsline {section}{\numberline {1.3}Standardised Forms of Communication}{2}%
+\contentsline {subsection}{\numberline {1.3.1}Morse Codes}{2}%
+\contentsline {subsubsection}{Applications for the General Public}{4}%
+\contentsline {subsubsection}{Morse Code as an Assistive Technology}{4}%
+\contentsline {subsection}{\numberline {1.3.2}American Sign Language}{5}%
+\contentsline {subsubsection}{Finger-Spelling}{7}%
+\contentsline {section}{\numberline {1.4}Tools}{7}%
+\contentsline {subsection}{\numberline {1.4.1}Front-end Tools}{7}%
+\contentsline {subsubsection}{Android Studio}{8}%
+\contentsline {subsubsection}{Python}{9}%
+\contentsline {subsection}{\numberline {1.4.2}Back-end Tools}{10}%
+\contentsline {subsubsection}{Firebase}{10}%
+\contentsline {subsubsection}{Neural Network Model}{11}%
+\contentsline {subsubsection}{Python}{12}%
+\contentsline {subsubsection}{Java}{12}%
+\contentsline {chapter}{\numberline {2}System Requirements}{14}%
+\contentsline {section}{\numberline {2.1}Software Requirements}{14}%
+\contentsline {section}{\numberline {2.2}Hardware Requirements}{14}%
+\contentsline {chapter}{\numberline {3}System Design}{15}%
+\contentsline {section}{\numberline {3.1}Android Application}{15}%
+\contentsline {subsection}{\numberline {3.1.1}Application Components}{16}%
+\contentsline {subsubsection}{Activities}{16}%
+\contentsline {subsubsection}{Services}{18}%
+\contentsline {subsubsection}{Broadcast Receivers}{19}%
+\contentsline {subsubsection}{Content Providers}{19}%
+\contentsline {subsection}{\numberline {3.1.2}Front-end Features}{21}%
+\contentsline {subsubsection}{Layouts}{21}%
+\contentsline {subsubsection}{Notification Overviews}{22}%
+\contentsline {subsubsection}{Dialogs}{23}%
+\contentsline {subsubsection}{Menus}{23}%
+\contentsline {subsubsection}{Toasts}{23}%
+\contentsline {subsection}{\numberline {3.1.3}Back-end Features}{24}%
+\contentsline {subsubsection}{Intents and Intent Filters}{24}%
+\contentsline {subsubsection}{Data and File Storage}{26}%
+\contentsline {subsubsection}{App Resources}{27}%
+\contentsline {subsubsection}{Premissions}{28}%
+\contentsline {section}{\numberline {3.2}Inception v3 Neural Network}{28}%
+\contentsline {subsubsection}{Estimator API}{29}%
+\contentsline {subsubsection}{ImageNet Dataset}{30}%
+\contentsline {subsubsection}{Input Pipeline}{31}%
+\contentsline {subsubsection}{Preprocessing Stage}{36}%
+\contentsline {subsubsection}{Learning Rate Adaptation}{42}%
+\contentsline {section}{\numberline {3.3}Application Programming Interfaces}{44}%
+\contentsline {subsubsection}{The principle of API abstraction enables speed and agility}{44}%
+\contentsline {subsection}{\numberline {3.3.1}TensorFlow Lite API}{45}%
+\contentsline {subsubsection}{Machine learning at the edge}{45}%
+\contentsline {subsubsection}{Key Features}{46}%
+\contentsline {subsubsection}{Development Workflow}{46}%
+\contentsline {subsection}{\numberline {3.3.2}Firebase API}{47}%
+\contentsline {subsubsection}{Firebase Services}{47}%
+\contentsline {subsection}{\numberline {3.3.3}Google Text-to-Speech API}{50}%
+\contentsline {subsubsection}{Evolution}{50}%
+\contentsline {subsection}{\numberline {3.3.4}Google Speech-to-Text API}{52}%
+\contentsline {chapter}{\numberline {4}Project Implementation}{54}%
+\contentsline {section}{\numberline {4.1}Project Implementation Flow}{54}%
+\contentsline {subsubsection}{Phase I - The Input Phase}{54}%
+\contentsline {subsubsection}{Phase II - The Conversion and Transmission Phase}{54}%
+\contentsline {subsubsection}{Phase III - The Output Phase}{54}%
+\contentsline {section}{\numberline {4.2}Android Application Implementation}{56}%
+\contentsline {subsection}{\numberline {4.2.1}Design Ideologies}{56}%
+\contentsline {subsubsection}{Colour and Font Selection}{56}%
+\contentsline {subsubsection}{User-Application Interaction}{56}%
+\contentsline {subsubsection}{Minimalitic Design Concepts}{58}%
+\contentsline {subsection}{\numberline {4.2.2}Application Phases}{58}%
+\contentsline {subsubsection}{The Input Phase}{59}%
+\contentsline {subsubsection}{The Conversion and Transmission Phase}{60}%
+\contentsline {subsubsection}{The Output Phase}{61}%
+\contentsline {subsection}{\numberline {4.2.3}Database Structure}{62}%
+\contentsline {subsubsection}{The `Users' Block}{64}%
+\contentsline {subsubsection}{The `Email ID' Block}{64}%
+\contentsline {subsubsection}{The `Chats' Block}{65}%
+\contentsline {subsubsection}{The `New', `Read' and `Sent' Blocks}{65}%
+\contentsline {section}{\numberline {4.3}Inception v3 Neural Network}{65}%
+\contentsline {subsection}{\numberline {4.3.1}Data Collection}{66}%
+\contentsline {subsubsection}{Need for a Data Set}{66}%
+\contentsline {subsection}{\numberline {4.3.2}Model Training}{67}%
+\contentsline {subsection}{\numberline {4.3.3}Model Predictions}{68}%
+\contentsline {chapter}{\numberline {5}Conclusion}{70}%
