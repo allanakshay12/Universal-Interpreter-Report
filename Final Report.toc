@@ -56,20 +56,27 @@
 \contentsline {subsubsection}{Evolution}{50}%
 \contentsline {subsection}{\numberline {3.3.4}Google Speech-to-Text API}{52}%
 \contentsline {chapter}{\numberline {4}Project Implementation}{54}%
-\contentsline {section}{\numberline {4.1}Project Flow}{54}%
-\contentsline {subsection}{\numberline {4.1.1}Phase I}{54}%
-\contentsline {subsection}{\numberline {4.1.2}Phase II}{54}%
-\contentsline {subsection}{\numberline {4.1.3}Phase III}{54}%
-\contentsline {section}{\numberline {4.2}Android Application Implementation}{54}%
-\contentsline {subsection}{\numberline {4.2.1}Design Ideologies}{54}%
-\contentsline {subsection}{\numberline {4.2.2}Application Phases}{54}%
-\contentsline {subsection}{\numberline {4.2.3}Database Structure}{54}%
-\contentsline {section}{\numberline {4.3}Inception v3 Neural Network}{54}%
-\contentsline {subsection}{\numberline {4.3.1}Data Collection}{54}%
-\contentsline {subsection}{\numberline {4.3.2}Model Training}{54}%
-\contentsline {subsection}{\numberline {4.3.3}Model Predictions}{54}%
-\contentsline {chapter}{\numberline {5}Project Snapshots}{55}%
-\contentsline {section}{\numberline {5.1}Landing Page}{55}%
-\contentsline {section}{\numberline {5.2}Settings/Preferences Page}{55}%
-\contentsline {section}{\numberline {5.3}Input Methods}{55}%
-\contentsline {chapter}{\numberline {6}Conclusion}{56}%
+\contentsline {section}{\numberline {4.1}Project Implementation Flow}{54}%
+\contentsline {subsubsection}{Phase I - The Input Phase}{54}%
+\contentsline {subsubsection}{Phase II - The Conversion and Transmission Phase}{54}%
+\contentsline {subsubsection}{Phase III - The Output Phase}{54}%
+\contentsline {section}{\numberline {4.2}Android Application Implementation}{56}%
+\contentsline {subsection}{\numberline {4.2.1}Design Ideologies}{56}%
+\contentsline {subsubsection}{Colour and Font Selection}{56}%
+\contentsline {subsubsection}{User-Application Interaction}{56}%
+\contentsline {subsubsection}{Minimalitic Design Concepts}{58}%
+\contentsline {subsection}{\numberline {4.2.2}Application Phases}{58}%
+\contentsline {subsubsection}{The Input Phase}{59}%
+\contentsline {subsubsection}{The Conversion and Transmission Phase}{60}%
+\contentsline {subsubsection}{The Output Phase}{61}%
+\contentsline {subsection}{\numberline {4.2.3}Database Structure}{62}%
+\contentsline {subsubsection}{The `Users' Block}{64}%
+\contentsline {subsubsection}{The `Email ID' Block}{64}%
+\contentsline {subsubsection}{The `Chats' Block}{65}%
+\contentsline {subsubsection}{The `New', `Read' and `Sent' Blocks}{65}%
+\contentsline {section}{\numberline {4.3}Inception v3 Neural Network}{65}%
+\contentsline {subsection}{\numberline {4.3.1}Data Collection}{66}%
+\contentsline {subsubsection}{Need for a Data Set}{66}%
+\contentsline {subsection}{\numberline {4.3.2}Model Training}{67}%
+\contentsline {subsection}{\numberline {4.3.3}Model Predictions}{68}%
+\contentsline {chapter}{\numberline {5}Conclusion}{70}%

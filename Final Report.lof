@@ -1,24 +1,40 @@
 \babel@toc {english}{}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces The International Morse Code}}{3}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Representation of the SOS Morse Code}}{4}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces ASL Hand Signs}}{6}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The International Morse Code\relax }}{3}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Representation of the SOS Morse Code\relax }}{4}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces ASL Hand Signs\relax }}{6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Android Application Life Cycle}}{17}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Illustration of a view hierarchy, which defines a UI layout}}{21}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Illustration of how an implicit intent is delivered through the system to start another activity}}{24}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Inception v3 Model Overview}}{29}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Inception v3 Input Pipeline}}{32}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Inception v3 Performance Models}}{33}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Sample Cloud TPU Performance Trace of Inception v3}}{36}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Preprocessing Sample Image}}{41}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Inception v3 Learning Rate}}{42}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Workflow using TensorFlow Lite}}{47}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Firebase as a Database Server and Cloud Messaging platform}}{48}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Firebase Cloud Functions}}{49}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Google Text-to-Speech API}}{51}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Google Speech-to-Text API}}{52}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Android Application Life Cycle\relax }}{17}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Illustration of a view hierarchy, which defines a UI layout\relax }}{21}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Illustration of how an implicit intent is delivered through the system to start another activity\relax }}{24}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Inception v3 Model Overview\relax }}{29}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Inception v3 Input Pipeline\relax }}{32}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Inception v3 Performance Models\relax }}{33}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Sample Cloud TPU Performance Trace of Inception v3\relax }}{36}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Preprocessing Sample Image\relax }}{41}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Inception v3 Learning Rate\relax }}{42}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Workflow using TensorFlow Lite\relax }}{47}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Firebase as a Database Server and Cloud Messaging platform\relax }}{48}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Firebase Cloud Functions\relax }}{49}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Google Text-to-Speech API\relax }}{51}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Google Speech-to-Text API\relax }}{52}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Project Implementation Flowchart\relax }}{55}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Application Colour and Font Selection\relax }}{57}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {New Received Message}}}{57}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Previously Received Message}}}{57}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Two Screen Halves Model\relax }}{58}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Three Screen Halves Model\relax }}{59}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Application Input Methods - I\relax }}{60}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Text}}}{60}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Speech}}}{60}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Application Input Methods - II\relax }}{61}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Morse Code}}}{61}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {American Sign Language}}}{61}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Preferences Page\relax }}{62}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Database Structure\relax }}{63}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Communication with a New User\relax }}{64}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Data Sets for a Neural Network Model\relax }}{67}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Prediction with the Inception v3 Model\relax }}{68}%
 \addvspace {10\p@ }

@@ -65,6 +65,14 @@ INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
 INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\subfig\subfig.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\subfig\subfig.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\float\float.sty
+INPUT C:\Users\Jerry Allan Akshay\AppData\Roaming\MiKTeX\2.9\tex\latex\float\float.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\babel\switch.def
@@ -143,9 +151,6 @@ OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lof
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lof
 OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lof
-INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lot
-INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lot
-OUTPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.lot
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmbx12.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr17.tfm
@@ -246,6 +251,76 @@ INPUT .\images\googlestt.png
 INPUT .\images\googlestt.png
 INPUT .\images\googlestt.png
 INPUT .\images\googlestt.png
+INPUT images\ProjectFlow.jpg
+INPUT .\images\ProjectFlow.jpg
+INPUT .\images\ProjectFlow.jpg
+INPUT .\images\ProjectFlow.jpg
+INPUT .\images\ProjectFlow.jpg
+INPUT images\ColourSelect.jpeg
+INPUT .\images\ColourSelect.jpeg
+INPUT .\images\ColourSelect.jpeg
+INPUT .\images\ColourSelect.jpeg
+INPUT .\images\ColourSelect.jpeg
+INPUT images\ReadMessage.jpeg
+INPUT .\images\ReadMessage.jpeg
+INPUT .\images\ReadMessage.jpeg
+INPUT .\images\ReadMessage.jpeg
+INPUT .\images\ReadMessage.jpeg
+INPUT images\2half.png
+INPUT .\images\2half.png
+INPUT .\images\2half.png
+INPUT .\images\2half.png
+INPUT .\images\2half.png
+INPUT images\3half.png
+INPUT .\images\3half.png
+INPUT .\images\3half.png
+INPUT .\images\3half.png
+INPUT .\images\3half.png
+INPUT images\TextInput.jpeg
+INPUT .\images\TextInput.jpeg
+INPUT .\images\TextInput.jpeg
+INPUT .\images\TextInput.jpeg
+INPUT .\images\TextInput.jpeg
+INPUT images\SpeechInput.jpeg
+INPUT .\images\SpeechInput.jpeg
+INPUT .\images\SpeechInput.jpeg
+INPUT .\images\SpeechInput.jpeg
+INPUT .\images\SpeechInput.jpeg
+INPUT images\MorseInput.jpeg
+INPUT .\images\MorseInput.jpeg
+INPUT .\images\MorseInput.jpeg
+INPUT .\images\MorseInput.jpeg
+INPUT .\images\MorseInput.jpeg
+INPUT images\ASLInput.jpeg
+INPUT .\images\ASLInput.jpeg
+INPUT .\images\ASLInput.jpeg
+INPUT .\images\ASLInput.jpeg
+INPUT .\images\ASLInput.jpeg
+INPUT images\PrefPage.jpeg
+INPUT .\images\PrefPage.jpeg
+INPUT .\images\PrefPage.jpeg
+INPUT .\images\PrefPage.jpeg
+INPUT .\images\PrefPage.jpeg
+INPUT images\DataStruct.png
+INPUT .\images\DataStruct.png
+INPUT .\images\DataStruct.png
+INPUT .\images\DataStruct.png
+INPUT .\images\DataStruct.png
+INPUT images\ReceivePage.jpeg
+INPUT .\images\ReceivePage.jpeg
+INPUT .\images\ReceivePage.jpeg
+INPUT .\images\ReceivePage.jpeg
+INPUT .\images\ReceivePage.jpeg
+INPUT images\DataCollection.png
+INPUT .\images\DataCollection.png
+INPUT .\images\DataCollection.png
+INPUT .\images\DataCollection.png
+INPUT .\images\DataCollection.png
+INPUT images\ModelPred.PNG
+INPUT .\images\ModelPred.PNG
+INPUT .\images\ModelPred.PNG
+INPUT .\images\ModelPred.PNG
+INPUT .\images\ModelPred.PNG
 INPUT c:\Users\Jerry Allan Akshay\Documents\GitHub\Universal Interpreter Report\Universal Interpreter Report\Universal-Interpreter-Report\Final Report.aux
 INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-rmtt.enc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathit.enc

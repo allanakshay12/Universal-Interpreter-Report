@@ -21,6 +21,10 @@
 \usepackage{amsmath}  % for \hookrightarrow
 \usepackage{xcolor}   % for \textcolor
 \usepackage{listings}
+\usepackage{subfig}
+\usepackage{float}
+
+
 \lstset{
   basicstyle=\ttfamily,
   columns=fullflexible,
@@ -122,10 +126,6 @@
 
 	\listoffigures
 
-	\vfill
-
-	\listoftables
-
 	\newpage
 
 	\renewcommand{\footrulewidth}{0.4pt}
@@ -217,6 +217,7 @@
 					\includegraphics[width=12cm]{ASL Signs.png}
 					\centering
 					\caption{ASL Hand Signs}
+					\label{fig:ASLHandSign}
 				\end{figure}
 
 				\subsubsection{Finger-Spelling}
@@ -1042,7 +1043,7 @@ if training_active:
 					\centering
 					\caption{Google Speech-to-Text API}
 				\end{figure}
-				
+
 				Speech recognition applications include voice user interfaces such as voice dialing (e.g. "call home"), call routing (e.g. "I would like to make a collect call"), domotic appliance control, search key words (e.g. find a podcast where particular words were spoken), simple data entry (e.g., entering a credit card number), preparation of structured documents (e.g. a radiology report), determining speaker characteristics, speech-to-text processing (e.g., word processors or emails), and aircraft (usually termed direct voice input).\\
 
 				The term voice recognition or speaker identification refers to identifying the speaker, rather than what they are saying. Recognizing the speaker can simplify the task of translating speech in systems that have been trained on a specific person's voice or it can be used to authenticate or verify the identity of a speaker as part of a security process.\\
@@ -1059,35 +1060,206 @@ if training_active:
 	\lhead{\titleref{chapter4}}
 	
 
-		\section{Project Flow}
-			\subsection{Phase I}
-			\subsection{Phase II}
-			\subsection{Phase III}
+		\section{Project Implementation Flow}
+		
+				The Project Implementation Flow depicts the various stages and phases involved in the implementation of the project - starting from the input phase to the output phase. Figure~\ref{fig:ProjectFlow} depicts the various phases involved in the project implementation.\\
 
+				As shown in the figure, the project is divided into 3 phases - The Input Phase, The Conversion and Transmission Phase and The Output Phase.
+			\subsubsection{Phase I - The Input Phase}
+				This phase deals with the collection of input data such as gestures (sign language), taps (for morse code) or direct speech (voice) from any client device that has the Android application installed on it.
+			\subsubsection{Phase II - The Conversion and Transmission Phase}
+				This phase deals with the conversion of the input data into a fundamental form (such as Morse/Digital), transmission and processing of the gathered data.
+			\subsubsection{Phase III - The Output Phase}
+				This phase deals with obtaining the output data from the preceding phase and represent them either visually, via vibrations or via speech, as follows:
+				\begin{enumerate}
+					\item Voice/Morse for the Blind
+					\begin{figure}[H]
+						\includegraphics[width=\textwidth]{ProjectFlow.jpg}
+						\centering
+						\caption{Project Implementation Flowchart}
+						\label{fig:ProjectFlow}
+					\end{figure}
+					\item Sign-language/Text for the Deaf
+					\item Sign-language/Voice for the Dumb
+					\item Morse codes wherever these are not possible
+				\end{enumerate}
+			
 		\section{Android Application Implementation}
+			This project uses an Android application as the front-end application to receive the user input and to generate the user output. Since the application is designed for use by the physically impaired, the various features of the application needs to be fine-tuned to cater to the target audience. The approaches used to achieve this are discussed in the subsections below.
 			\subsection{Design Ideologies}
+				The User Interface (UI) or User Experience (UX) of an applicaton (or any frontend software) can prove to either be very detrimental or a tremendous boost to the app usage. Since the application is designed for use by the physically-impaired, the design idealogies used play a very crucial role. Keeping this in mind, we had designed the entire applicaton focusing on easability of use and minimalism. The various design ideologies used in this project are discussed below.
+				\subsubsection{Colour and Font Selection}
+				\begin{figure}[h]
+					\centering
+					\subfloat[New Received Message]{{\includegraphics[width=6cm]{ColourSelect.jpeg} }}%
+					\qquad
+					\subfloat[Previously Received Message]{{\includegraphics[width=6cm]{ReadMessage.jpeg} }}%
+					\caption{Application Colour and Font Selection}%
+					\label{fig:ColourSelect}%
+				\end{figure}
+					Keeping the concepts of minimalism and easability to read, we had decided to stick to the basic contrasting colours of black and white, with large fonts, for easability of viewing and reading.\\
+					
+					The new messages are depicted with a white font over a black background, and the read messages are depicted with a black font over a white background. Figure~\ref{fig:ColourSelect} represents a page of the application, portraying the colour and font selection of the application.
+				\subsubsection{User-Application Interaction}
+					Since the target audience of this application is the physically-impaired, we tried to limit the user-application interaction to a bare minimum. As a result, we have used two different interaction models in the application.\\
+
+					For the landing page, the page that shows the user the list of received messages, we have used the "Two Screen Halves Model". This model enables the user to cycle through all the messages received by him/her in a clockwise or anti-clockwise manner (depending on the area of screen tapped). The 'Left Half' enables the user to either cycle through the received messages in an anti-clockwise fashion or to start a new conversation with a new user (on long tap). The 'Right Half' enables to user to either cycle through the received messages in a clockwise fashion or read the message received from the displayed user (on long tap). Figure~\ref{fig:2half} depicts the "Two Screen Halves Model".\\
+					\begin{figure}[h]
+						\includegraphics[width=6cm]{2half.png}
+						\centering
+						\caption{Two Screen Halves Model}
+						\label{fig:2half}
+					\end{figure} 
+
+					Similarly, we have used the "Three Screen Halves Model" as the user-interaction model to allow the sender to input and send messages, and the receiver to read/view the input in the appropriate form. The 'Upper Left Half' is used for character deletion purposes or to use the user's camera image stream. The 'Upper Right Half' is either used to provide morse input (tap for a dot, long tap for a dash) or to use the user's camera image stream. The 'Center Area' is used either to provide a white space to the input, to use the user's camera image stream or to send the message to the desired user (on long tap). Figure~\ref{fig:3half} depicts the "Three Screen Halves Model".
+					\begin{figure}[h]
+						\includegraphics[width=6cm]{3half.png}
+						\centering
+						\caption{Three Screen Halves Model}
+						\label{fig:3half}
+					\end{figure} 
+
+				\subsubsection{Minimalitic Design Concepts}
+					Reiterating the fact that this application is made for the physically-impaired, we have stuck to minimalistic design concepts throughout the application. Key features of this design concept include lesser text on the screen, basic and simple layout designs, high contrast colours, large font sizes, and fewer user-application interaction areas - most of which were discussed within this subsection.
+
+					
+
 			\subsection{Application Phases}
+					As discussed in the `Project Implementation Flow' section, the application implements the three phases, namely the input phase, the conversion and transmission phase, and the output phase. The implemetation of each of these phases is discussed below.
+					\subsubsection{The Input Phase}
+						This application uses various forms of input catering to the various categories of the physically-impaired. The various input methods and their use cases are discussed below.
+						\begin{itemize}
+							\item \textbf{Text - }This form of input can be used by the deaf, the dumb, or a combination of both. The tool used for this input method is the default Android keyboard provided by the Android Operating System.
+							\item \textbf{Morse Code - }This form of input can be used by the deaf, the dumb, the blind, or a combination of these. The tool used for this input method is the `Three Screen Halves Model'. This user-interaction model enables the user to provide dots and dashes as inputs, that constitute the message. The application also provides appropriate haptic feedbacks depending on the input symbol.
+							\item \textbf{Speech - }This form of input can be used by the deaf, the blind, or a combination of both. The tool used for this input method is the Google Speech-to-Text API which had been discussed in the previous sections.
+							\item \textbf{American Sign Language - }This form of input can be used by the deaf, the dumb, or a combination of both. The tool used for this input method is the Inception v3 Image Recognition Neural Network Model. This model uses the user's camera live image stream to perform prediction operations, thus determining the right input symbol (in the American Sign Language) held up by the user.
+						\end{itemize}
+
+						Figures~\ref{fig:input1} and ~\ref{fig:input2} represent the various input methods implemented in the application.  
+						\begin{figure}[h]
+							\centering
+							\subfloat[Text]{{\includegraphics[width=5cm]{TextInput.jpeg} }}%
+							\qquad
+							\subfloat[Speech]{{\includegraphics[width=5cm]{SpeechInput.jpeg} }}%
+							\caption{Application Input Methods - I}%
+							\label{fig:input1}%
+						\end{figure}
+						\begin{figure}[h]
+							\centering
+							\subfloat[Morse Code]{{\includegraphics[width=5cm]{MorseInput.jpeg} }}%
+							\qquad
+							\subfloat[American Sign Language]{{\includegraphics[width=5cm]{ASLInput.jpeg} }}%
+							\caption{Application Input Methods - II}%
+							\label{fig:input2}%
+						\end{figure}
+				\subsubsection{The Conversion and Transmission Phase}
+						This phase of the application deals with the conversion of the various types of input data (as discussed previously) to a fundamental form, and the transmission of this data from the sender to the receiver.\\
+
+						Here, the fundamental form of data used is the text format which is stored as a String on the database. The tramsmission is acheived with the help of the Firebase APIs that enables us to use Firebase's Realtime Database and Cloud Messaging Services.\\
+
+						The input data, before being sent to the receiver from the sender, is validated and converted to text with the help of certain algorithms designed solely for the purposes of conversion of the input data. Once validated and converted, this text is stored on the Firebase servers as a modified JSON object. This message is then received by the receiver whenever he/she opens the application. Thus, conversion and transmission is achieved in this manner.
+
+				\subsubsection{The Output Phase}
+					On similar lines as the input phase, this application uses various forms of output catering to the various categories of the physically-impaired. The various output methods and their use cases are discussed below.
+					\begin{itemize}
+						\item \textbf{Text - }This form of output can be used by the deaf,  the dumb,  or a combination of both. The tool used for this output method is the default Android text display provided by the Android Operating System.
+						\item \textbf{Speech - }This form of output can be used by the deaf, the blind, or a combination of both. The tool used for this output method is the Google Text-to-Speech API which had been discussed in the previous sections.
+						\item \textbf{Morse Code - }This form of output can be used by the deaf, the dumb, the blind, or a combination of these. The tool used for this is the Android haptic feedback feature which allows us to set vibration durations of the phone depending on whether the input to the feedback generator is a dot or a dash.
+					\end{itemize}	
+
+					One point to note is that the input and output preferences can be set through the `Preferences Page' as shown in Figure~\ref{fig:PrefPage}.\\
+					\begin{figure}[h]
+						\includegraphics[width=6.5cm]{PrefPage.jpeg}
+						\centering
+						\caption{Preferences Page}
+						\label{fig:PrefPage}
+					\end{figure} 
+
+					One can also change their Display Names through the `Preferences Page'. They also have the choice of logging in to a different account through this page.
 			\subsection{Database Structure}
-		
+				The database of any application plays a crucial role as it stores all the data that is being transacted online through the application. This particular application - Universal Interpreter - uses Firebase as the Database Server.\\
+
+				Firebase is a NoSQL Database Server that stores data as JSON objects instead of tables. The structure of the JSON object for this particular application is shown in Figure~\ref{fig:DataStruct}. The description of this structure is provided in the subsequent sub-sections.\\
+				\begin{figure}[H]
+					\includegraphics[width=15cm]{DataStruct.png}
+					\centering
+					\caption{Database Structure}
+					\label{fig:DataStruct}
+				\end{figure} 
+				\subsubsection{The `Users' Block}
+					The `Users' block stores the Email-IDs of all the users of the application. Any login to the application will traverse this list to find the respective email id. If the email id doesn't exist, it implies that the user hasn't created an account on the application yet, following which a new account is automatically on the server on behalf of the user.\\
+
+					One more use case where this block is used is when a user needs to send a message to a user he/she has never previously communicated with. The sender will have to enter the `Receiver's Email ID' in the app, and only if the email id exists in the `Users' Block will the sender be allowed to send a message to the desired user. Otherwise, an error message is displayed stating that the user does not exist. This page is depicted in Figure~\ref{fig:ReceivePage}.
+					\begin{figure}[h]
+						\includegraphics[width=6cm]{ReceivePage.jpeg}
+						\centering
+						\caption{Communication with a New User}
+						\label{fig:ReceivePage}
+					\end{figure} 
+				\subsubsection{The `Email ID' Block}
+					The `Email ID' block stores the Chats for the respective user. This block is particularly used whenever a user opens the app. The app connects to the database and references to the logged in user's email id (present in the `Users' block). Upon referencing, the app uses the `Chats' block to populate the app with the different types of messages - New and Read. The Sent messages exist only as a form of backtracking on the server, in case of breaches or other security concerns.\\
+
+					The `Email ID' block also stores the name of the user and his/her respective password. The 'Name' field is used to store the Display Name of the user and it is the name displayed on the receiver's phone, should a sender send a message across.
+				\subsubsection{The `Chats' Block}
+					The `Chats' block is used to store the different types of messages - namely the New, Read and Sent messages - of the respective user.\\
+
+					This block makes use of a special sub-block named `Key Values'. This sub-block is used to store the latest message reference keys of the `New', `Read' and `Sent' blocks. This particularly helps to reduce the table lookup time whenever a new message entry is made on the database. 
+				\subsubsection{The `New', `Read' and `Sent' Blocks}
+					These blocks are used to store the various messages transacted between the various users of the application. Each message has a unique `Key Value' that is assigned to it with the help of the `Key Values' block as discussed in the previous sub-section.\\
+
+					Each message block contains the following fields - Email, Message and Name. The Email field stores the email id of either the sender (in the New / Read block) or the receiver (in the Sent block). Similarly, the Name field stores either the name of the sender (in the New / Read block) or the name of the receiver (in the Sent block). The Message field stores the message content that is transmitted from the sender to the receiver, in the form of text (String).  
 		\section{Inception v3 Neural Network}
+					As discussed previously, we have used the Inception v3 Neural Network for the purposes of Image Recognition. For our particular application, we have used the model to recognize the hand symbols pertaining to the American Sign Language.\\
+
+					The usage of any Neural Network for any applications depends on the coverage and the efficiency of the following steps - Data Collection, Model Training and Model Predictions. Each of these steps is discussed in detail below.
 			\subsection{Data Collection}
+					Data Collection involves the collection of data required for training and testing of the Neural Network Model. A data set is a collection of data. In other words, a data set corresponds to the contents of a single database table, or a single statistical data matrix, where every column of the table represents a particular variable, and each row corresponds to a given member of the data set in question.\\
+
+					In Machine Learning projects, we need a training data set. It is the actual data set used to train the model for performing various actions.
+
+					\subsubsection{Need for a Data Set}
+						Machine Learning depends heavily on data. Without data, it is impossible for an any Neural Network to `learn'. It is the most crucial aspect that makes algorithm training possible. No matter how great the Neural Network model is or the size of your data set; if your data set is not good enough, your entire Neural Network model will fail to predict accurately.\\
+
+						During any Neural Network development, we always rely on data. From training, tuning, model selection, to testing, we use three different data sets - the training set, the validation set, and the testing set. The validation sets are used to select and tune the final Neural Network Model.\\
+						\begin{enumerate}
+							\item \textbf{Training Data Set - }The training data set is the set that is used to train an algorithm to understand how to apply concepts such as neural networks, to learn and produce results. It includes both input data and the expected output. Training sets make up the majority of the total data, around 60\%. In testing, the models are fit to parameters in a process that is known as adjusting weights.
+							\item \textbf{Testing Date Set -}The testing data set is used to evaluate how well your algorithm was trained with the training data set. In any AI project, we cannot use the training data set in the testing stage because the algorithm will already know the expected output, which is not our goal. Testing sets represent 20\% of the data. The test set is ensured to be the input data grouped together with verified correct outputs, generally by human verification.
+						\end{enumerate}
+
+						Figure~\ref{fig:DataCollection} depicts the various data sets and their use cases.
+						\begin{figure}[h]
+							\includegraphics[width=\textwidth]{DataCollection.png}
+							\centering
+							\caption{Data Sets for a Neural Network Model}
+							\label{fig:DataCollection}
+						\end{figure}
+
+						For this particular project, our data sets included the hand gestures for all the 26 alphabets of the english language, under different lighting and background conditions. The various hand gestures (or hand symbols) for the American Sign Language are depicted in Figure~\ref{fig:ASLHandSign}.
 			\subsection{Model Training}
+						Usually, machine learning models require a lot of data in order for them to perform well. Usually, when training a machine learning model, one needs to collect a large, representative sample of data from a training set. Data from the training set can be as varied as a corpus of text, a collection of images, and data collected from individual users of a service. Overfitting is something to watch out for when training a machine learning model.\\
+
+						The Inception v3 Model is a pre-trained model provided by TensorFlow. For the purposes of this application, we apply Transfer Learning to this existing model and re-train it to classify a new set of images (which in our case are the ASL hand symbols).\\
+
+						Using the training data set that we've collected, we train the Neural Network Model using a Python script. Once this training process has completed, we get an updated weights file that help us to perform image recognition operations on any camera image data stream.
+						
 			\subsection{Model Predictions}
+				Predictive modeling uses statistics to predict outcomes. Most often the event one wants to predict is in the future, but predictive modelling can be applied to any type of unknown event, regardless of when it occurred. For example, predictive models are often used to detect crimes and identify suspects, after the crime has taken place.\\
 
+				In many cases the model is chosen on the basis of detection theory to try to guess the probability of an outcome given a set amount of input data, for example given an email determining how likely that it is spam.\\
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{ModelPred.PNG}
+					\centering
+					\caption{Prediction with the Inception v3 Model}
+					\label{fig:ModelPred}
+				\end{figure}
 
-	\newpage
+				Models can use one or more classifiers in trying to determine the probability of a set of data belonging to another set. For example, a model might be used to determine whether an email is spam or "ham" (non-spam).\\
 
-	%Project Snapshots
+				Depending on definitional boundaries, predictive modelling is synonymous with, or largely overlapping with, the field of machine learning, as it is more commonly referred to in academic or research and development contexts. When deployed commercially, predictive modelling is often referred to as predictive analytics.\\
 
-	\chapter{Project Snapshots}\label{chapter5}
-		
-	\lhead{\titleref{chapter5}}
-	
+				Predictive modelling is often contrasted with causal modelling/analysis. In the former, one may be entirely satisfied to make use of indicators of, or proxies for, the outcome of interest. In the latter, one seeks to determine true cause-and-effect relationships. This distinction has given rise to a burgeoning literature in the fields of research methods and statistics and to the common statement that "correlation does not imply causation".\\
 
-		\section{Landing Page}
-		\section{Settings/Preferences Page}
-		\section{Input Methods}
-
+				In our application, the Inception v3 Model predictions have attained a certain level of predicton accuracy, which can be better improved with the help of a larger training data set with wider coverage in different physical conditions. A sample of the Model Predictions attained in our project are shown in Figure~\ref{fig:ModelPred}.
 	\newpage
 
 	%Conclusion
@@ -1095,16 +1267,71 @@ if training_active:
 	\chapter{Conclusion}\label{chapter6}
 		
 	\lhead{\titleref{chapter6}}
-	
+				This project has surely been a learning experience for all of us. The exposure we've received to Neural Network Models and the use of these models in real life applications is truly tremendous. The ability to help the physically-impaired with the help of the current technology is surely an eye-opener.\\
+
+				This project, while it remains for now a basic communication application, can be extended for use in various other applications. The very same tools used in this project can be used to provide authentication services to the physically-impaired in banking application scenarios. They can also be used to perform real-time translation of data at public venues such as shopping malls or parks.\\
+
+				We really hope this project of ours could help the needy and make the dominating technologies more accessible to them. We hope this project could help bridge the existent wide gap between the prevalent technological devices and the physically-impaired.
 
 	\newpage
 
 	%References
-
-	\chapter*{References}\label{chapter7}
 		
-	\lhead{\titleref{chapter7}}
+	\lhead{Reference}
+	\renewcommand{\bibname}{References}
+	\begin{thebibliography}{9}
+		\bibitem{latexcompanion} 
+		Peter Norvig and Stuart J. Russell.
+		\textit{Artificial Intelligence: A Modern Approach}. 
+		Prentice Hall, 1994.
 	
+		\bibitem{latexcompanion} 
+		Tom Mitchell.
+		\textit{Machine Learning}. 
+		McGraw Hill, 1997.
+
+		\bibitem{latexcompanion} 
+		Ted Hagos.
+		\textit{Android Studio IDE Quick Reference: A Pocket Guide to Android Studio Development}. 
+		Apress, 2019.
+
+		\bibitem{latexcompanion} 
+		Adam Gerber, Clifton Craig and David Selvaraj.
+		\textit{Learn Android Studio: Build Android Apps Quickly and Effectively}. 
+		Apress, 2018.
+
+		\bibitem{latexcompanion} 
+		Sam Abrahams, Danijar Hafner, Erik Erwitt and Ariel Scarpinelli.
+		\textit{TensorFlow For Machine Intelligence: A hands-on introduction to learning algorithms}. 
+		Bleeding Edge Press, 2016.
+
+		\bibitem{latexcompanion} 
+		Mark Lutz.
+		\textit{Learning Python: Powerful Object-Oriented Programming}. 
+		O'Reilly Media, 2013.
+
+		\bibitem{latexcompanion} 
+		Aur\'elien G\'eron.
+		\textit{Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems}. 
+		O'Reilly Media, 2019.
+
+		\bibitem{latexcompanion} 
+		Herbert Schildt.
+		\textit{Java: The Complete Reference}. 
+		McGraw-Hill Education, 2018.
+
+		\bibitem{latexcompanion} 
+		Dr. Y. Daniel Liang.
+		\textit{Introduction to Java Programming and Data Structures}. 
+		Pearson, 2017.
+
+		\bibitem{latexcompanion} 
+		Andreas Müller.
+		\textit{Introduction to Java Programming and Data Structures}. 
+		O'Reilly Media, 2016.
+
+
+	\end{thebibliography}
 
 	\newpage
 
